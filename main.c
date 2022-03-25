@@ -14,6 +14,6 @@
 int     main(void)
 {
     printf("PF: 12345\n");
-    ft_printf("12345\n");
+    ft_printf("12345%0s%a6%#+0d7%p\n");
     return (0);
 }

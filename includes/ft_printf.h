@@ -19,9 +19,22 @@
 # include <stddef.h>
 # include <stdlib.h>
 
+typedef struct s_flags
+{
+    int     is_minus;
+	int	    is_plus;
+    int	    is_space;
+	int 	is_zero;
+	int 	is_hash;
+	int 	is_apost;
+	int 	is_dot;
+	char	type;
+}	t_flags;
+
 int     ft_printf(const char *str, ...);
-void	*my_realloc(void *ptr, size_t nsize);
-size_t  getsize(void *p);
+int     is_type(char c);
+int     set_flag(char c, t_flags *f);
+void    reset_flag(t_flags *f);
 
 #endif
 
