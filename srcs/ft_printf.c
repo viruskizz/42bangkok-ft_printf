@@ -31,18 +31,16 @@ int	ft_printf(const char *str, ...)
 	return (len);
 }
 
-int		print(const char *str, va_list ap)
+int	print(const char *str, va_list ap)
 {
 	char	*buf;
 	char	*flag;
 	int		len;
-	t_flags f;
+	t_flags	f;
 
 	buf = malloc(sizeof(char) * 1);
 	buf[0] = 0;
 	len = 0;
-	// ft_strlcpy(buf, str, ft_strlen(str));
-	// buf = my_strcat((char *) tmp, "xxx");
 	while (*str)
 	{
 		printf("%c", *str);
@@ -53,7 +51,7 @@ int		print(const char *str, va_list ap)
 			{
 				printf("\nFF >> %s\n", flag);
 				map(flag, ap);
-				str += ft_strlen(flag) - 1; 
+				str += ft_strlen(flag) - 1;
 				free(flag);
 			}
 		}
@@ -67,27 +65,23 @@ int		print(const char *str, va_list ap)
 char	*get_flag(const char *str, t_flags *f)
 {
 	int		i;
-	int		valid;
 	char	*fstr;
 
-	fstr = malloc(sizeof(char) * 2);
+	fstr = set_flag_str(NULL, '%', 0);
 	if (!fstr)
 		return (NULL);
-	fstr[0] = '%';
-	fstr[1] = 0;
 	i = 1;
 	while (str[i])
 	{
 		reset_flag(f);
-		valid = set_flag(str[i], f);
-		if (!valid)
+		if (!set_flag(str[i], f))
 		{	
 			free(fstr);
 			return (NULL);
 		}
-		fstr = my_realloc(fstr, i + 2);
-		fstr[i] = str[i];
-		fstr[i + 1] = 0;
+		fstr = set_flag_str(fstr, str[i], i);
+		if (!str)
+			return (NULL);
 		if (f->type)
 			return (fstr);
 		i++;

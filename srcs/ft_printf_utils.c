@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 #include "ft_printf.h"
 
-int     is_type(char c)
+int	is_type(char c)
 {
-    if (c == 'c')
+	if (c == 'c')
 		return (1);
 	else if (c == 's')
 		return (1);
@@ -29,18 +29,18 @@ int     is_type(char c)
 		return (1);
 	else if (c == '%')
 		return (1);
-    else
-        return (0);
+	else
+		return (0);
 }
 
-int     set_flag(char c, t_flags *f)
+int	set_flag(char c, t_flags *f)
 {
-    int     valid;
+	int		valid;
 
-    valid = 1;
-    if (is_type(c))
-        f->type = c;
-    else if (c == '-')
+	valid = 1;
+	if (is_type(c))
+		f->type = c;
+	else if (c == '-')
 		f->is_minus = 1;
 	else if (c == '+')
 		f->is_plus = 1;
@@ -54,19 +54,35 @@ int     set_flag(char c, t_flags *f)
 		f->is_apost = 1;
 	else if (c == '.')
 		f->is_minus = 1;
-    else
-        valid = 0;
-    return (valid);
+	else
+		valid = 0;
+	return (valid);
 }
 
-void    reset_flag(t_flags *f)
+void	reset_flag(t_flags *f)
 {
-    f->is_apost = 0;
-    f->is_dot = 0;
-    f->is_hash = 0;
-    f->is_minus = 0;
-    f->is_plus = 0;
-    f->is_space = 0;
-    f->is_zero = 0;
-    f->type = 0;
+	f->is_apost = 0;
+	f->is_dot = 0;
+	f->is_hash = 0;
+	f->is_minus = 0;
+	f->is_plus = 0;
+	f->is_space = 0;
+	f->is_zero = 0;
+	f->type = 0;
+}
+
+char	*set_flag_str(char *fstr, char c, int i)
+{
+	int		n;
+
+	n = i + 2;
+	if (!fstr)
+		fstr = malloc(sizeof(char) * n);
+	else
+		fstr = my_realloc(fstr, n);
+	if (!fstr)
+		return (NULL);
+	fstr[i] = c;
+	fstr[n - 1] = 0;
+	return (fstr);
 }

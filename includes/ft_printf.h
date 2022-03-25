@@ -35,6 +35,7 @@ int     ft_printf(const char *str, ...);
 int     is_type(char c);
 int     set_flag(char c, t_flags *f);
 void    reset_flag(t_flags *f);
+char	*set_flag_str(char *fstr, char c, int i);
 
 #endif
 
