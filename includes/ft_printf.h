@@ -19,7 +19,9 @@
 # include <stddef.h>
 # include <stdlib.h>
 
-int	ft_printf(const char *str, ...);
+int     ft_printf(const char *str, ...);
+void	*my_realloc(void *ptr, size_t nsize);
+size_t  getsize(void *p);
 
 #endif
 

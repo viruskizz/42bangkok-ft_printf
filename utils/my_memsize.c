@@ -1,19 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   my_memsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 23:41:28 by araiva            #+#    #+#             */
-/*   Updated: 2022/03/23 23:41:30 by araiva           ###   ########.fr       */
+/*   Created: 2022/03/25 20:44:36 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/25 20:44:37 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "includes/ft_printf.h"
-#include <stdio.h>
-int     main(void)
+#include <stddef.h>
+
+size_t     my_memsize(void *ptr)
 {
-    printf("PF: 12345\n");
-    ft_printf("12345\n");
-    return (0);
+    char    *str;
+    size_t  n;
+
+    n = 0;
+    str = (char *) ptr;
+    while (*str++)
+        n++;
+    return (n);
 }

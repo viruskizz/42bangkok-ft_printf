@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   my_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 23:41:28 by araiva            #+#    #+#             */
-/*   Updated: 2022/03/23 23:41:30 by araiva           ###   ########.fr       */
+/*   Created: 2022/03/25 20:42:32 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/25 20:42:34 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "includes/ft_printf.h"
-#include <stdio.h>
-int     main(void)
+#include "libft.h"
+#include "my_utils.h"
+
+char	*my_strcat(char *s1, char *s2)
 {
-    printf("PF: 12345\n");
-    ft_printf("12345\n");
-    return (0);
+	int		i;
+	int		n1;
+	int		n2;
+
+	i = 0;
+	n1 = ft_strlen(s1);
+	n2 = ft_strlen(s2);
+	s1 = my_realloc((void *) s1, n1 + n2 + 1);
+	while(i < n1)
+		i++;
+	while(i < n2 + n1)
+	{
+		s1[i] = s2[i - n1];
+		i++;
+	}
+	s1[i] = 0;
+	return (s1); 
 }

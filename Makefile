@@ -17,10 +17,14 @@ CFLAGS		= -Wall -Wextra -Werror
 INCS_DIR	= ./includes
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
-# LFLAGS		= -L $(LIBFT_DIR) -l ft
 
 SRC_DIR		= ./srcs
-SRCS		= $(SRC_DIR)/ft_printf.c
+UTIL_DIR	= ./utils
+SRCS		= 	$(SRC_DIR)/ft_printf.c \
+				$(SRC_DIR)/ft_printf_utils.c \
+				$(UTIL_DIR)/my_memsize.c \
+				$(UTIL_DIR)/my_strcat.c \
+				$(UTIL_DIR)/my_realloc.c
 
 OBJS		= $(SRCS:.c=.o)
 
@@ -50,4 +54,14 @@ re: fclean all
 
 rebonus: fclean bonus
 
+test: re
+	@$(CC) $(CFLAGS) main.c -lftprintf -L . -o runner.out
+	@echo "\033[0;32m=== RUNNER ===\033[0m"
+	@./runner.out
+
+testmem: re
+	@$(CC) $(CFLAGS) main.c -lftprintf -L . -o runner.out
+	@echo "\033[0;32m=== RUNNER ===\033[0m"
+	@valgrind -q --leak-check=full --track-origins=yes ./runner.out
+	
 .PHONY: all clean fclean re
