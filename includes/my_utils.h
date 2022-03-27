@@ -17,8 +17,9 @@
 # include <unistd.h>
 # include <stddef.h>
 # include <stdlib.h>
+# include <limits.h>
 
-char	*my_ith(long nb);
+char	*my_ith(long long int nb);
 char	*my_strrev(char *str);
 char	*my_strcat(char *s1, char *s2);
 void	*my_realloc(void *ptr, size_t nsize);

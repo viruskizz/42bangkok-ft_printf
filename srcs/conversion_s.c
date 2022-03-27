@@ -9,17 +9,22 @@
 /*   Updated: 2022/03/26 13:28:52 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include "libft.h"
 #include "my_utils.h"
 
 char	*conversion_s(char *s)
 {
 	char	*str;
 
-	str = malloc(1);
-	if (!str)
-		return (NULL);
-	str[0] = 0;
-	str = my_strcat(str, s);
+	if (s)
+	{
+		str = ft_calloc(sizeof(char), ft_strlen(s) + 1);
+		str = ft_memcpy(str, s, ft_strlen(s));
+	}
+	else
+	{
+		str = ft_calloc(sizeof(char), 7);
+		str = ft_memcpy(str, "(null)", 6);
+	}
 	return (str);
 }

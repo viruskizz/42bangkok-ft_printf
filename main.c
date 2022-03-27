@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include "includes/ft_printf.h"
 #include <stdio.h>
+#include <limits.h>
 
 int	main(void)
 {
@@ -24,20 +25,22 @@ int	main(void)
 	// printf("\nm = %d", m);
 
 	// String Test
-	// n = ft_printf(" %s NULL", NULL);
+	// char	*s = NULL;
+
+	// n = ft_printf("%s", s);
 	// ft_printf("\nn = %d\n", n);
-	// m = printf(" %s NULL", NULL);
+	// m = printf("%s", s);
 	// printf("\nm = %d", m);
 
 	// Pointer
-	// char	*s;
-	int		x;
+	void	*s = "Araiva";
+	void	*x = (void *) LONG_MIN;
+	void	*y = (void *) ULONG_MAX;
+	void	*z = (void *) -ULONG_MAX;
 
-	// s = "Araiva";
-	x = -1;
-	n = ft_printf(" %p ", &x);
+	n = ft_printf(" %p %p %p %p", s, x, y, z);
 	ft_printf("\nn = %d\n", n);
-	m = printf(" %p ", &x);
+	m = printf(" %p %p %p %p", s, x, y, z);
 	printf("\nm = %d", m);
 	return (0);
 }

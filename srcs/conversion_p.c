@@ -16,13 +16,20 @@ char	*conversion_p(void *ptr)
 {
 	char	*hex;
 	char	*pstr;
-	long	d;
+	// long	d;
 
-	d = (long) ptr;
-	hex = my_ith(d);
+	// d = (long long int) ptr;
+	// printf("\nD: %ld", d);
+	if (!ptr)
+	{
+		pstr = ft_calloc(sizeof(char), 6);
+		pstr = ft_memcpy(pstr, "(nil)", 5);
+		return (pstr);
+	}
+	hex = my_ith((long long int) ptr);
 	if (!hex)
 		return (NULL);
-	pstr = calloc(sizeof(char), 3);
+	pstr = ft_calloc(sizeof(char), 3);
 	if (!pstr)
 		return (NULL);
 	pstr[0] = '0';
