@@ -33,14 +33,20 @@ int	main(void)
 	// printf("\nm = %d", m);
 
 	// Pointer
-	void	*s = "Araiva";
-	void	*x = (void *) LONG_MIN;
-	void	*y = (void *) ULONG_MAX;
-	void	*z = (void *) -ULONG_MAX;
+	// void	*s = "Araiva";
+	// void	*x = (void *) LONG_MIN;
+	// void	*y = (void *) ULONG_MAX;
+	// void	*z = (void *) -ULONG_MAX;
 
-	n = ft_printf(" %p %p %p %p", s, x, y, z);
+	// n = ft_printf(" %p %p %p %p", s, x, y, z);
+	// ft_printf("\nn = %d\n", n);
+	// m = printf(" %p %p %p %p", s, x, y, z);
+	// printf("\nm = %d", m);
+
+	// 1, 25, 29
+	n = ft_printf(" %u ", (unsigned int)LONG_MIN);
 	ft_printf("\nn = %d\n", n);
-	m = printf(" %p %p %p %p", s, x, y, z);
+	m = printf(" %u ", (unsigned int)LONG_MIN);
 	printf("\nm = %d", m);
 	return (0);
 }

@@ -27,6 +27,7 @@ SRCS		= 	$(SRC_DIR)/ft_printf.c \
 				$(SRC_DIR)/conversion_d.c \
 				$(SRC_DIR)/conversion_s.c \
 				$(SRC_DIR)/conversion_p.c \
+				$(SRC_DIR)/conversion_u.c \
 				$(UTIL_DIR)/my_strrev.c \
 				$(UTIL_DIR)/my_ith.c \
 				$(UTIL_DIR)/my_memsize.c \

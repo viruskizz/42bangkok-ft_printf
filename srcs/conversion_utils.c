@@ -34,6 +34,8 @@ char	*conversion_type(va_list ap, t_format *f)
 		str = conversion_d(va_arg(ap, int));
 	else if (f->type == 'i')
 		str = conversion_d(va_arg(ap, int));
+	else if (f->type == 'u')
+		str = conversion_u(va_arg(ap, int));
 	else
 	{
 		str = malloc(sizeof(char) * 1);

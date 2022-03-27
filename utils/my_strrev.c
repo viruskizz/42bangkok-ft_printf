@@ -18,6 +18,8 @@ char	*my_strrev(char *str)
 	int		i;
 	int		n;
 
+	if (!str)
+		return (str);
 	i = 0;
 	n = ft_strlen(str);
 	while (i < n / 2)
