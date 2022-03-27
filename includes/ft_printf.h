@@ -41,5 +41,6 @@ char	*conversion_d(int d);
 char	*conversion_s(char *s);
 char	*conversion_p(void *ptr);
 char	*conversion_u(unsigned int d);
+char	*conversion_x(unsigned int nb, int is_upper);
 
 #endif

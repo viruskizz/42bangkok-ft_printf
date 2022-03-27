@@ -28,6 +28,8 @@ int	is_type(char c)
 		return (1);
 	else if (c == 'x')
 		return (1);
+	else if (c == 'X')
+		return (1);
 	else if (c == '%')
 		return (1);
 	else

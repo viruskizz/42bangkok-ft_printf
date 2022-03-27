@@ -36,6 +36,12 @@ char	*conversion_type(va_list ap, t_format *f)
 		str = conversion_d(va_arg(ap, int));
 	else if (f->type == 'u')
 		str = conversion_u(va_arg(ap, int));
+	else if (f->type == 'x')
+		str = conversion_x(va_arg(ap, unsigned int), 0);
+	else if (f->type == 'X')
+		str = conversion_x(va_arg(ap, unsigned int), 1);
+	else if (f->type == '%')
+		str = conversion_c('%');
 	else
 	{
 		str = malloc(sizeof(char) * 1);

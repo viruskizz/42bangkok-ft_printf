@@ -43,10 +43,14 @@ int	main(void)
 	// m = printf(" %p %p %p %p", s, x, y, z);
 	// printf("\nm = %d", m);
 
-	// 1, 25, 29
-	n = ft_printf(" %u ", (unsigned int)LONG_MIN);
+	// n = ft_printf(" %u ", (unsigned int)LONG_MIN);
+	// ft_printf("\nn = %d\n", n);
+	// m = printf(" %u ", (unsigned int)LONG_MIN);
+	// printf("\nm = %d", m);
+
+	n = ft_printf("%X", 1000);
 	ft_printf("\nn = %d\n", n);
-	m = printf(" %u ", (unsigned int)LONG_MIN);
+	m = printf("%X", 1000);
 	printf("\nm = %d", m);
 	return (0);
 }

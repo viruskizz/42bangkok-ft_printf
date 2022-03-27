@@ -13,7 +13,6 @@
 #include "libft.h"
 
 static int	baselen(long long int nb);
-static char	*hexlmit(long long int nb);
 
 // Convert int to hex
 char	*my_ith(long long int nb)
@@ -23,12 +22,10 @@ char	*my_ith(long long int nb)
 	int		i;
 
 	base = "0123456789abcdef";
-	str = hexlmit(nb);
-	if (str)
-		return (str);
 	str = ft_calloc(sizeof(char), baselen(nb) + 1);
 	if (!str)
 		return (NULL);
+	str[0] = '0';
 	i = 0;
 	while (nb > 0)
 	{
@@ -36,40 +33,16 @@ char	*my_ith(long long int nb)
 		nb = nb / 16;
 		i++;
 	}
-	str[i] = 0;
 	my_strrev(str);
 	return (str);
-}
-
-static char	*hexlmit(long long int nb)
-{
-	char	*str;
-
-	if (nb < -1)
-	{
-		// 8000000000000000
-		str = ft_calloc(sizeof(char), 16 + 1);
-		if (!str)
-			return (NULL);
-		str = ft_memcpy(str, "8000000000000000", 16);
-		return (str);
-	}
-	if (nb == -1)
-	{
-		// ffffffffffffffff
-		str = ft_calloc(sizeof(char), 16 + 1);
-		if (!str)
-			return (NULL);
-		str = ft_memcpy(str, "ffffffffffffffff", 16);
-		return (str);
-	}
-	return (NULL);
 }
 
 static int	baselen(long long int nb)
 {
 	int		i;
 
+	if (nb == 0)
+		return (1);
 	i = 0;
 	while (nb > 0)
 	{

@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_utils.h                                         :+:      :+:    :+:   */
+/*   conversion_x.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 20:41:11 by araiva            #+#    #+#             */
-/*   Updated: 2022/03/25 20:41:13 by araiva           ###   ########.fr       */
+/*   Created: 2022/03/27 21:18:02 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/27 21:18:05 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
+#include "my_utils.h"
 
-#ifndef MY_UTILS_H
-# define MY_UTILS_H
+char	*conversion_x(unsigned int nb, int is_upper)
+{
+	char	*hex;
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stddef.h>
-# include <stdlib.h>
-# include <limits.h>
-
-char	*my_ith(long long int nb);
-char	*my_strrev(char *str);
-char	*my_strcat(char *s1, char *s2);
-void	*my_realloc(void *ptr, size_t nsize);
-char	*my_strtoupper(char *str);
-size_t	my_memsize(void *ptr);
-
-#endif
+	hex = my_ith(nb);
+	if (!hex)
+		return (NULL);
+	if (is_upper)
+		hex = my_strtoupper(hex);
+	return (hex);
+}

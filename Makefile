@@ -28,13 +28,15 @@ SRCS		= 	$(SRC_DIR)/ft_printf.c \
 				$(SRC_DIR)/conversion_s.c \
 				$(SRC_DIR)/conversion_p.c \
 				$(SRC_DIR)/conversion_u.c \
+				$(SRC_DIR)/conversion_x.c \
 				$(UTIL_DIR)/my_strrev.c \
 				$(UTIL_DIR)/my_ith.c \
 				$(UTIL_DIR)/my_memsize.c \
 				$(UTIL_DIR)/my_strcat.c \
+				$(UTIL_DIR)/my_strtoupper.c \
 				$(UTIL_DIR)/my_realloc.c
 
-OBJS		= $(SRCS:.c=.o)
+OBJS		= $(SRCS:%.c=%.o)
 
 all: $(NAME)
 
