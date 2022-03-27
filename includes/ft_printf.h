@@ -39,5 +39,6 @@ char	*conversion_type(va_list ap, t_format *f);
 char	*conversion_c(char c);
 char	*conversion_d(int d);
 char	*conversion_s(char *s);
+char	*conversion_p(void *ptr);
 
 #endif

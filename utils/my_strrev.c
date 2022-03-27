@@ -1,27 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_utils.h                                         :+:      :+:    :+:   */
+/*   my_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 20:41:11 by araiva            #+#    #+#             */
-/*   Updated: 2022/03/25 20:41:13 by araiva           ###   ########.fr       */
+/*   Created: 2022/03/27 09:56:55 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/27 09:56:57 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "libft.h"
+#include "my_utils.h"
 
-#ifndef MY_UTILS_H
-# define MY_UTILS_H
+char	*my_strrev(char *str)
+{
+	char	c;
+	int		i;
+	int		n;
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stddef.h>
-# include <stdlib.h>
-
-char	*my_ith(long nb);
-char	*my_strrev(char *str);
-char	*my_strcat(char *s1, char *s2);
-void	*my_realloc(void *ptr, size_t nsize);
-size_t	my_memsize(void *ptr);
-
-#endif
+	i = 0;
+	n = ft_strlen(str);
+	while (i < n / 2)
+	{
+		c = str[n - i - 1];
+		str[n - i - 1] = str[i];
+		str[i] = c;
+		i++;
+	}
+	return (str);
+}

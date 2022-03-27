@@ -94,11 +94,16 @@ int	print_format(va_list ap, t_format *f)
 	int		n;
 
 	cstr = conversion_format(ap, f);
-	if (*cstr == 0)
+	if (f->type == 'c' && *cstr == 0)
+	{
+		ft_putchar_fd(*cstr, 1);
 		n = 1;
+	}
 	else
+	{
+		ft_putstr_fd(cstr, 1);
 		n = ft_strlen(cstr);
-	ft_putstr_fd(cstr, 1);
+	}
 	free(cstr);
 	return (n);
 }
