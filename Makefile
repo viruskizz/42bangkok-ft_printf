@@ -22,6 +22,10 @@ SRC_DIR		= ./srcs
 UTIL_DIR	= ./utils
 SRCS		= 	$(SRC_DIR)/ft_printf.c \
 				$(SRC_DIR)/ft_printf_utils.c \
+				$(SRC_DIR)/conversion_utils.c \
+				$(SRC_DIR)/conversion_c.c \
+				$(SRC_DIR)/conversion_d.c \
+				$(SRC_DIR)/conversion_s.c \
 				$(UTIL_DIR)/my_memsize.c \
 				$(UTIL_DIR)/my_strcat.c \
 				$(UTIL_DIR)/my_realloc.c

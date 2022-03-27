@@ -20,6 +20,6 @@
 
 char	*my_strcat(char *s1, char *s2);
 void	*my_realloc(void *ptr, size_t nsize);
-size_t  my_memsize(void *ptr);
+size_t	my_memsize(void *ptr);
 
 #endif

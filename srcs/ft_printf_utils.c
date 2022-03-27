@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
+#include "my_utils.h"
 
 int	is_type(char c)
 {
@@ -33,7 +34,7 @@ int	is_type(char c)
 		return (0);
 }
 
-int	set_flag(char c, t_flags *f)
+int	set_format(char c, t_format *f)
 {
 	int		valid;
 
@@ -59,7 +60,7 @@ int	set_flag(char c, t_flags *f)
 	return (valid);
 }
 
-void	reset_flag(t_flags *f)
+void	reset_format(t_format *f)
 {
 	f->is_apost = 0;
 	f->is_dot = 0;
@@ -71,7 +72,7 @@ void	reset_flag(t_flags *f)
 	f->type = 0;
 }
 
-char	*set_flag_str(char *fstr, char c, int i)
+char	*set_format_str(char *fstr, char c, int i)
 {
 	int		n;
 

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   conversion_s.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/23 23:41:28 by araiva            #+#    #+#             */
-/*   Updated: 2022/03/23 23:41:30 by araiva           ###   ########.fr       */
+/*   Created: 2022/03/26 13:28:50 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/26 13:28:52 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "includes/ft_printf.h"
-#include <stdio.h>
 
-int	main(void)
+#include "my_utils.h"
+
+char	*conversion_s(char *s)
 {
-	int	n;
-	int	m;
+	char	*str;
 
-	n = ft_printf(" %c %c %c ", '0', 0, '1');
-	ft_printf("\nn = %d\n", n);
-	m = printf(" %c %c %c ", '0', 0, '1');
-	printf("\nm = %d", m);
-	return (0);
+	str = malloc(1);
+	if (!str)
+		return (NULL);
+	str[0] = 0;
+	str = my_strcat(str, s);
+	return (str);
 }
