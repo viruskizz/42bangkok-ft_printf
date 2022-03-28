@@ -50,5 +50,7 @@ char	*conversion_width(char	*cstr, t_format *f);
 char	*conversion_width(char	*cstr, t_format *f);
 char	*format_pcs(char *cstr, t_format *f);
 char	*format_pcs_digit(char *cstr, t_format *f);
+char	*align_left(char *cstr, t_format *f);
+char	*align_right(char *cstr, t_format *f);
 
 #endif
