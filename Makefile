@@ -22,6 +22,7 @@ SRC_DIR		= ./srcs
 SRCS		= 	$(SRC_DIR)/ft_printf.c \
 				$(SRC_DIR)/ft_printf_utils.c \
 				$(SRC_DIR)/format_utils.c \
+				$(SRC_DIR)/format_pcs.c \
 				$(SRC_DIR)/conversion_type.c \
 				$(SRC_DIR)/conversion_flag.c \
 				$(SRC_DIR)/conversion_width.c \

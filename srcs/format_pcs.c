@@ -1,0 +1,100 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   format_pcs.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/03/28 22:44:03 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/28 22:44:04 by araiva           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ft_printf.h"
+#include "libft.h"
+#include "myutils.h"
+
+static char	*pcs_digit_operation(char *cstr, t_format *f);
+static char	*pcs_digit_fill(char *cfstr, char *cstr, t_format *f);
+
+char	*format_pcs(char *cstr, t_format *f)
+{
+	char	*cfstr;
+
+	if (f->pcs && f->type == 's')
+	{
+		if (ft_strncmp(cstr, "(null)", 6) == 0 && f->pcs < 6)
+		{
+			cfstr = malloc(sizeof(char) * 1);
+			cfstr[0] = 0;
+		}
+		else
+			cfstr = ft_substr(cstr, 0, f->pcs);
+		free(cstr);
+		return (cfstr);
+	}
+	return (cstr);
+}
+
+char	*format_pcs_digit(char *cstr, t_format *f)
+{
+	char	*cfstr;
+
+	if (f->type != 'd' || !f->dot)
+		return (cstr);
+	else if (cstr[0] == '0' && f->pcs == 0)
+	{
+		cfstr = ft_calloc(sizeof(char), f->pcs + 1);
+		free(cstr);
+		return (cfstr);
+	}
+	else if (f->pcs - ft_strlen(cstr) >= 0)
+	{
+		cfstr = pcs_digit_operation(cstr, f);
+		return (cfstr);
+	}
+	return (cstr);
+}
+
+static char	*pcs_digit_operation(char *cstr, t_format *f)
+{
+	char	*cfstr;
+
+	if (cstr[0] == '-')
+	{
+		cfstr = ft_calloc(sizeof(char), f->pcs + 2);
+		cfstr[0] = '-';
+	}
+	else
+		cfstr = ft_calloc(sizeof(char), f->pcs + 1);
+	pcs_digit_fill(cfstr, cstr, f);
+	free(cstr);
+	return (cfstr);
+}
+
+static char	*pcs_digit_fill(char *cfstr, char *cstr, t_format *f)
+{
+	int		i;
+	int		j;
+	int		len;
+
+	len = ft_strlen(cstr);
+	i = 0;
+	j = 0;
+	if (cstr[0] == '-')
+	{
+		i++;
+		j++;
+		len--;
+		f->pcs++;
+	}
+	while (i < f->pcs)
+	{
+		if (i < f->pcs - len)
+			cfstr[i] = '0';
+		else
+			cfstr[i] = cstr[j++];
+		i++;
+	}
+	return (cfstr);
+}

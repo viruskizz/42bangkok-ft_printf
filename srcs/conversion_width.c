@@ -33,22 +33,16 @@ char	*conversion_width(char	*cstr, t_format *f)
 		free(cstr);
 		return (cfstr);
 	}
+	if (f->type == 'd' && f->minus)
+		cfstr = align_left_digit(cstr, f);
+	else if (f->type == 'd' && !f->minus)
+		cfstr = align_right_digit(cstr, f);
+	else if (f->minus)
+		cfstr = align_left(cstr, f);
 	else
-	{
-		if (f->minus)
-			if (f->type == 'd')
-				cfstr = align_left_digit(cstr, f);
-			else
-				cfstr = align_left(cstr, f);
-		else
-			if (f->type == 'd')
-				cfstr = align_right_digit(cstr, f);
-			else
-				cfstr = align_right(cstr, f);
-		free(cstr);
-		return (cfstr);
-	}
-	
+		cfstr = align_right(cstr, f);
+	free(cstr);
+	return (cfstr);
 }
 
 static char	*align_left(char *cstr, t_format *f)
