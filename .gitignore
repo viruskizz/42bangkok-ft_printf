@@ -4,3 +4,4 @@
 *.o
 *.out
 *.a
+main.c

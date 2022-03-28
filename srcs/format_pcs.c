@@ -27,7 +27,8 @@ char	*format_pcs(char *cstr, t_format *f)
 		cfstr = format_pcs_str(cstr, f);
 		return (cfstr);
 	}
-	if (f->type == 'i' || f->type == 'd' || f->type == 'u' || f->type == 'x' || f->type == 'X')
+	if (f->type == 'i' || f->type == 'd' || f->type == 'u'
+		|| f->type == 'x' || f->type == 'X')
 	{
 		cfstr = format_pcs_digit(cstr, f);
 		return (cfstr);

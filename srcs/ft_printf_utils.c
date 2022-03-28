@@ -12,7 +12,7 @@
 #include "ft_printf.h"
 #include "libft.h"
 
-static int	print_char(char *cstr,  int w);
+static int	print_char(char *cstr, int w);
 static int	print_str(char *cstr, t_format *f);
 
 int	print_format(va_list ap, t_format *f)
