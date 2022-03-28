@@ -9,11 +9,12 @@
 /*   Updated: 2022/03/28 22:44:04 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 #include "libft.h"
 #include "myutils.h"
 
+static char	*format_pcs_str(char *cstr, t_format *f);
+static char	*format_pcs_digit(char *cstr, t_format *f);
 static char	*pcs_digit_operation(char *cstr, t_format *f);
 static char	*pcs_digit_fill(char *cfstr, char *cstr, t_format *f);
 
@@ -21,26 +22,39 @@ char	*format_pcs(char *cstr, t_format *f)
 {
 	char	*cfstr;
 
-	if (f->pcs && f->type == 's')
+	if (f->pcs && (f->type == 's' || f->type == 'c'))
 	{
-		if (ft_strncmp(cstr, "(null)", 6) == 0 && f->pcs < 6)
-		{
-			cfstr = malloc(sizeof(char) * 1);
-			cfstr[0] = 0;
-		}
-		else
-			cfstr = ft_substr(cstr, 0, f->pcs);
-		free(cstr);
+		cfstr = format_pcs_str(cstr, f);
+		return (cfstr);
+	}
+	if (f->type == 'i' || f->type == 'd' || f->type == 'u' || f->type == 'x' || f->type == 'X')
+	{
+		cfstr = format_pcs_digit(cstr, f);
 		return (cfstr);
 	}
 	return (cstr);
 }
 
-char	*format_pcs_digit(char *cstr, t_format *f)
+static char	*format_pcs_str(char *cstr, t_format *f)
 {
 	char	*cfstr;
 
-	if (f->type != 'd' || !f->dot)
+	if (ft_strncmp(cstr, "(null)", 6) == 0 && f->pcs < 6)
+	{
+		cfstr = malloc(sizeof(char) * 1);
+		cfstr[0] = 0;
+	}
+	else
+		cfstr = ft_substr(cstr, 0, f->pcs);
+	free(cstr);
+	return (cfstr);
+}
+
+static char	*format_pcs_digit(char *cstr, t_format *f)
+{
+	char	*cfstr;
+
+	if (!f->dot)
 		return (cstr);
 	else if (cstr[0] == '0' && f->pcs == 0)
 	{
@@ -51,6 +65,7 @@ char	*format_pcs_digit(char *cstr, t_format *f)
 	else if (f->pcs - ft_strlen(cstr) >= 0)
 	{
 		cfstr = pcs_digit_operation(cstr, f);
+		free(cstr);
 		return (cfstr);
 	}
 	return (cstr);
@@ -68,7 +83,6 @@ static char	*pcs_digit_operation(char *cstr, t_format *f)
 	else
 		cfstr = ft_calloc(sizeof(char), f->pcs + 1);
 	pcs_digit_fill(cfstr, cstr, f);
-	free(cstr);
 	return (cfstr);
 }
 

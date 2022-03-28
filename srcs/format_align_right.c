@@ -21,7 +21,7 @@ char	*align_right(char *cstr, t_format *f)
 {
 	char	*cfstr;
 
-	if (f->type == 'd')
+	if (f->type == 'd' || f->type == 'i'|| f->type == 'u' || f->type == 'x' || f->type == 'X')
 		cfstr = align_right_digit(cstr, f);
 	else
 		cfstr = align_right_str(cstr, f);

@@ -26,7 +26,6 @@ char	*conversion_flag(char	*cstr, t_format *f)
 	cstr = format_plus(cstr, f);
 	cstr = format_hash(cstr, f);
 	cstr = format_pcs(cstr, f);
-	cstr = format_pcs_digit(cstr, f);
 	free(buf);
 	return (cstr);
 }
@@ -59,10 +58,18 @@ static char	*format_hash(char	*cstr, t_format *f)
 
 	if (f->hash && (f->type == 'x' || f->type == 'X'))
 	{
-		cfstr = ft_calloc(sizeof(char), 3);
-		cfstr[0] = '0';
-		cfstr[1] = f->type;
-		cfstr = my_strcat(cfstr, cstr);
+		if (cstr[0] == '0')
+		{
+			cfstr = ft_calloc(sizeof(char), 2);
+			cfstr[0] = '0';
+		}
+		else
+		{
+			cfstr = ft_calloc(sizeof(char), 3);
+			cfstr[0] = '0';
+			cfstr[1] = f->type;
+			cfstr = my_strcat(cfstr, cstr);
+		}
 		free(cstr);
 		return (cfstr);
 	}

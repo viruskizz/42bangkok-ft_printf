@@ -14,7 +14,6 @@
 
 static int	print_char(char *cstr,  int w);
 static int	print_str(char *cstr, t_format *f);
-// static char	*null_str(char *cstr, t_format *f);
 
 int	print_format(va_list ap, t_format *f)
 {
@@ -54,9 +53,6 @@ static int	print_str(char *cstr, t_format *f)
 	if (f->type == 's' && (f->dot && f->pcs == 0))
 		return (0);
 	n = ft_strlen(cstr);
-	// inspect_f(cstr, f);
-	// printf(">> %s--\n", cstr);
-	// printf("n = %d\n", n);
 	if (f->width > 0 && n == 0)
 		n = print_char(cstr, f->width);
 	else
