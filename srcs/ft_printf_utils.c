@@ -13,6 +13,8 @@
 #include "libft.h"
 
 static int	print_char(char *cstr,  int w);
+static int	print_str(char *cstr, t_format *f);
+// static char	*null_str(char *cstr, t_format *f);
 
 int	print_format(va_list ap, t_format *f)
 {
@@ -22,11 +24,10 @@ int	print_format(va_list ap, t_format *f)
 	cstr = conversion_type(ap, f);
 	cstr = conversion_flag(cstr, f);
 	cstr = conversion_width(cstr, f);
-	n = ft_strlen(cstr);
 	if (f->type == 'c')
 		n = print_char(cstr, f->width);
 	else
-		ft_putstr_fd(cstr, 1);
+		n = print_str(cstr, f);
 	free(cstr);
 	return (n);
 }
@@ -44,4 +45,15 @@ static int	print_char(char *cstr, int w)
 		i++;
 	}
 	return (i);
+}
+
+static int	print_str(char *cstr, t_format *f)
+{
+	int		n;
+
+	if (f->dot && f->pcs == 0)
+		return (0);
+	n = ft_strlen(cstr);
+	ft_putstr_fd(cstr, 1);
+	return (n);
 }

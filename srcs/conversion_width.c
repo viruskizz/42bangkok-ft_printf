@@ -23,7 +23,16 @@ char	*conversion_width(char	*cstr, t_format *f)
 	int		n;
 
 	n = f->width - ft_strlen(cstr);
-	if (f->width > 0 && n > 0)
+	if (n <= 0)
+		return (cstr);
+	else if (f->dot && f->pcs == 0)
+	{
+		cfstr = malloc(1);
+		cfstr[0] = 0;
+		free(cstr);
+		return (cfstr);
+	}
+	else
 	{
 		if (f->minus)
 			cfstr = align_left(cstr, f);
@@ -32,7 +41,7 @@ char	*conversion_width(char	*cstr, t_format *f)
 		free(cstr);
 		return (cfstr);
 	}
-	return (cstr);
+	
 }
 
 static char	*align_left(char *cstr, t_format *f)

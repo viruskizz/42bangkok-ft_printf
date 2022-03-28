@@ -69,13 +69,19 @@ static char	*format_hash(char	*cstr, t_format *f)
 	return (cstr);
 }
 
-static char	*format_pcs(char	*cstr, t_format *f)
+static char	*format_pcs(char *cstr, t_format *f)
 {
 	char	*cfstr;
 
 	if (f->pcs && (f->type == 's'))
 	{
-		cfstr = ft_substr(cstr, 0, f->pcs);
+		if (ft_strncmp(cstr, "(null)", 6) == 0 && f->pcs < 6)
+		{
+			cfstr = malloc(sizeof(char) * 1);
+			cfstr[0] = 0;
+		}
+		else
+			cfstr = ft_substr(cstr, 0, f->pcs);
 		free(cstr);
 		return (cfstr);
 	}
