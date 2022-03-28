@@ -58,6 +58,7 @@ SRCS =	ft_isalnum.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
 		ft_lstsize.c \
+		my_printlen.c \
 		my_strrev.c \
 		my_ith.c \
 		my_memsize.c \

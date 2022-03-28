@@ -51,9 +51,15 @@ static int	print_str(char *cstr, t_format *f)
 {
 	int		n;
 
-	if (f->dot && f->pcs == 0)
+	if (f->type == 's' && (f->dot && f->pcs == 0))
 		return (0);
 	n = ft_strlen(cstr);
-	ft_putstr_fd(cstr, 1);
+	// inspect_f(cstr, f);
+	// printf(">> %s--\n", cstr);
+	// printf("n = %d\n", n);
+	if (f->width > 0 && n == 0)
+		n = print_char(cstr, f->width);
+	else
+		ft_putstr_fd(cstr, 1);
 	return (n);
 }

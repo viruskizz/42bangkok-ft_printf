@@ -16,6 +16,8 @@
 
 static char	*align_left(char *cstr, t_format *f);
 static char	*align_right(char *cstr, t_format *f);
+static char	*align_left_digit(char *cstr, t_format *f);
+static char	*align_right_digit(char *cstr, t_format *f);
 
 char	*conversion_width(char	*cstr, t_format *f)
 {
@@ -25,19 +27,24 @@ char	*conversion_width(char	*cstr, t_format *f)
 	n = f->width - ft_strlen(cstr);
 	if (n <= 0)
 		return (cstr);
-	else if (f->dot && f->pcs == 0)
+	else if (f->type == 's' && (f->dot && f->pcs == 0))
 	{
-		cfstr = malloc(1);
-		cfstr[0] = 0;
+		cfstr = ft_calloc(sizeof(char), 1);
 		free(cstr);
 		return (cfstr);
 	}
 	else
 	{
 		if (f->minus)
-			cfstr = align_left(cstr, f);
+			if (f->type == 'd')
+				cfstr = align_left_digit(cstr, f);
+			else
+				cfstr = align_left(cstr, f);
 		else
-			cfstr = align_right(cstr, f);
+			if (f->type == 'd')
+				cfstr = align_right_digit(cstr, f);
+			else
+				cfstr = align_right(cstr, f);
 		free(cstr);
 		return (cfstr);
 	}
@@ -48,16 +55,14 @@ static char	*align_left(char *cstr, t_format *f)
 {
 	char	*cfstr;
 	int		i;
-	int		len;
+	int		plen;
 
 	i = 0;
-	len = ft_strlen(cstr);
-	if (len == 0)
-		len = 1;
+	plen = my_printlen(cstr);
 	cfstr = ft_calloc(sizeof(char), f->width + 1);
 	while (i < f->width)
-	{
-		if (i < len)
+	{	
+		if (i < plen)
 			cfstr[i] = cstr[i];
 		else
 			cfstr[i] = ' ';
@@ -71,15 +76,13 @@ static char	*align_right(char *cstr, t_format *f)
 	char	*cfstr;
 	int		i;
 	int		j;
-	int		len;
+	int		plen;
 
 	i = 0;
 	j = 0;
-	len = ft_strlen(cstr);
-	if (len == 0)
-		len = 1;
+	plen = my_printlen(cstr);
 	cfstr = ft_calloc(sizeof(char), f->width + 1);
-	while (i < f->width - len)
+	while (i < f->width - plen)
 	{
 		if (f->zero)
 			cfstr[i] = '0';
@@ -87,7 +90,67 @@ static char	*align_right(char *cstr, t_format *f)
 			cfstr[i] = ' ';
 		i++;
 	}
-	while (j < len)
+	while (j < plen)
 		cfstr[i++] = cstr[j++];
+	return (cfstr);
+}
+
+static char	*align_left_digit(char *cstr, t_format *f)
+{
+	char	*cfstr;
+	int		i;
+	int		plen;
+
+	i = 0;
+	plen = my_printlen(cstr);
+	cfstr = ft_calloc(sizeof(char), f->width + 1);
+	while (i < f->width)
+	{	
+		if (i < plen)
+			if (f->dot && f->pcs == 0)
+				cfstr[i] = ' ';
+			else
+				cfstr[i] = cstr[i];
+		else
+			cfstr[i] = ' ';
+		i++;
+	}
+	return (cfstr);
+}
+
+static char	*align_right_digit(char *cstr, t_format *f)
+{
+	char	*cfstr;
+	int		i;
+	int		j;
+	int		plen;
+
+	i = 0;
+	j = 0;
+	plen = my_printlen(cstr);
+	cfstr = ft_calloc(sizeof(char), f->width + 1);
+	if (cstr[0] == '-' && (f->zero && !f->dot))
+	{
+		cfstr[i++] = cstr[j++];
+		f->width++;
+	}	
+	while (i < f->width - plen)
+	{
+		if (f->zero && !f->dot)
+			cfstr[i] = '0';
+		else
+			cfstr[i] = ' ';
+		i++;
+	}
+	while (j < plen)
+	{
+		if (f->dot && f->pcs == 0)
+		{
+			cfstr[i++] = ' ';
+			j++;
+		}	
+		else
+			cfstr[i++] = cstr[j++];
+	}
 	return (cfstr);
 }
