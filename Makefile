@@ -19,32 +19,28 @@ LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
 SRC_DIR		= ./srcs
-UTIL_DIR	= ./utils
 SRCS		= 	$(SRC_DIR)/ft_printf.c \
 				$(SRC_DIR)/ft_printf_utils.c \
-				$(SRC_DIR)/conversion_utils.c \
+				$(SRC_DIR)/format_utils.c \
+				$(SRC_DIR)/conversion_type.c \
+				$(SRC_DIR)/conversion_flag.c \
+				$(SRC_DIR)/conversion_width.c \
 				$(SRC_DIR)/conversion_c.c \
 				$(SRC_DIR)/conversion_d.c \
 				$(SRC_DIR)/conversion_s.c \
 				$(SRC_DIR)/conversion_p.c \
 				$(SRC_DIR)/conversion_u.c \
-				$(SRC_DIR)/conversion_x.c \
-				$(UTIL_DIR)/my_strrev.c \
-				$(UTIL_DIR)/my_ith.c \
-				$(UTIL_DIR)/my_memsize.c \
-				$(UTIL_DIR)/my_strcat.c \
-				$(UTIL_DIR)/my_strtoupper.c \
-				$(UTIL_DIR)/my_realloc.c
+				$(SRC_DIR)/conversion_x.c
 
 OBJS		= $(SRCS:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
+$(NAME): $(OBJS) $(LIBFT) $(MYUTILS)
 	ar -rcs $(NAME) $(OBJS)
 
 .c.o: 		
-	$(CC) $(CFLAGS) -I $(INCS_DIR) -I $(LIBFT_DIR) -c $< -o $(<:.c=.o)
+	$(CC) $(CFLAGS) -I $(SRC_DIR) -I $(LIBFT_DIR) -c $< -o $(<:.c=.o)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -65,7 +61,7 @@ re: fclean all
 rebonus: fclean bonus
 
 test: re
-	@$(CC) $(CFLAGS) main.c -lftprintf -L . -o runner.out
+	@$(CC) main.c -lftprintf -L . -o runner.out
 	@echo "\033[0;32m=== RUNNER ===\033[0m"
 	@./runner.out
 

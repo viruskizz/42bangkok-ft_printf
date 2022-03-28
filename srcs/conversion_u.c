@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include "my_utils.h"
+#include "myutils.h"
 
-static char* uits(unsigned int d);
-static	int	uilen(unsigned int d);
+static char	*uits(unsigned int d);
+static int	uilen(unsigned int d);
 
 char	*conversion_u(unsigned int d)
 {
@@ -24,7 +24,7 @@ char	*conversion_u(unsigned int d)
 	return (str);
 }
 
-static char *uits(unsigned int d)
+static char	*uits(unsigned int d)
 {
 	char	*str;
 	int		i;
@@ -43,14 +43,14 @@ static char *uits(unsigned int d)
 	return (str);
 }
 
-static	int	uilen(unsigned int d)
+static int	uilen(unsigned int d)
 {
 	int		i;
 
 	i = 0;
 	if (d == 0)
 		return (1);
-	while(d > 0)
+	while (d > 0)
 	{
 		d = d / 10;
 		i++;

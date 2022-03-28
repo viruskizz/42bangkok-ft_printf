@@ -5,87 +5,43 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/25 16:15:00 by araiva            #+#    #+#             */
-/*   Updated: 2022/03/25 16:15:01 by araiva           ###   ########.fr       */
+/*   Created: 2022/03/28 13:48:54 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/28 13:48:55 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
-#include "my_utils.h"
+#include "libft.h"
 
-int	is_type(char c)
+static int	print_char(char *cstr,  int w);
+
+int	print_format(va_list ap, t_format *f)
 {
-	if (c == 'c')
-		return (1);
-	else if (c == 's')
-		return (1);
-	else if (c == 'p')
-		return (1);
-	else if (c == 'd')
-		return (1);
-	else if (c == 'i')
-		return (1);
-	else if (c == 'u')
-		return (1);
-	else if (c == 'x')
-		return (1);
-	else if (c == 'X')
-		return (1);
-	else if (c == '%')
-		return (1);
-	else
-		return (0);
-}
-
-int	set_format(char c, t_format *f)
-{
-	int		valid;
-
-	valid = 1;
-	if (is_type(c))
-		f->type = c;
-	else if (c == '-')
-		f->is_minus = 1;
-	else if (c == '+')
-		f->is_plus = 1;
-	else if (c == ' ')
-		f->is_space = 1;
-	else if (c == '0')
-		f->is_zero = 1;
-	else if (c == '#')
-		f->is_hash = 1;
-	else if (c == '\'')
-		f->is_apost = 1;
-	else if (c == '.')
-		f->is_minus = 1;
-	else
-		valid = 0;
-	return (valid);
-}
-
-void	reset_format(t_format *f)
-{
-	f->is_apost = 0;
-	f->is_dot = 0;
-	f->is_hash = 0;
-	f->is_minus = 0;
-	f->is_plus = 0;
-	f->is_space = 0;
-	f->is_zero = 0;
-	f->type = 0;
-}
-
-char	*set_format_str(char *fstr, char c, int i)
-{
+	char	*cstr;
 	int		n;
 
-	n = i + 2;
-	if (!fstr)
-		fstr = malloc(sizeof(char) * n);
+	cstr = conversion_type(ap, f);
+	cstr = conversion_flag(cstr, f);
+	cstr = conversion_width(cstr, f);
+	n = ft_strlen(cstr);
+	if (f->type == 'c')
+		n = print_char(cstr, f->width);
 	else
-		fstr = my_realloc(fstr, n);
-	if (!fstr)
-		return (NULL);
-	fstr[i] = c;
-	fstr[n - 1] = 0;
-	return (fstr);
+		ft_putstr_fd(cstr, 1);
+	free(cstr);
+	return (n);
+}
+
+static int	print_char(char *cstr, int w)
+{
+	int		i;
+
+	i = 0;
+	if (w == 0)
+		w = 1;
+	while (i < w)
+	{
+		write(1, &cstr[i], 1);
+		i++;
+	}
+	return (i);
 }

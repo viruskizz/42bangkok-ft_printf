@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include "my_utils.h"
+#include "myutils.h"
+
 static char	*hexlmit(long long int nb);
 
 char	*conversion_p(void *ptr)
@@ -42,14 +43,12 @@ char	*conversion_p(void *ptr)
 	return (pstr);
 }
 
-
 static char	*hexlmit(long long int nb)
 {
 	char	*str;
 
 	if (nb == LONG_MIN)
 	{
-		// 8000000000000000
 		str = ft_calloc(sizeof(char), 16 + 1);
 		if (!str)
 			return (NULL);
@@ -58,7 +57,6 @@ static char	*hexlmit(long long int nb)
 	}
 	else if ((long unsigned int) nb == ULONG_MAX)
 	{
-		// ffffffffffffffff
 		str = ft_calloc(sizeof(char), 16 + 1);
 		if (!str)
 			return (NULL);

@@ -12,11 +12,10 @@
 #include <stdarg.h>
 #include "ft_printf.h"
 #include "libft.h"
-#include "my_utils.h"
+#include "myutils.h"
 
 int		runner(const char *str, va_list ap);
 char	*get_format_str(const char *str, t_format *f);
-int		print_format(va_list ap, t_format *f);
 
 int	ft_printf(const char *str, ...)
 {
@@ -69,9 +68,9 @@ char	*get_format_str(const char *str, t_format *f)
 	if (!fstr)
 		return (NULL);
 	i = 1;
+	reset_format(f);
 	while (str[i])
 	{
-		reset_format(f);
 		if (!set_format(str[i], f))
 		{	
 			free(fstr);
@@ -86,22 +85,4 @@ char	*get_format_str(const char *str, t_format *f)
 	}
 	free(fstr);
 	return (NULL);
-}
-
-int	print_format(va_list ap, t_format *f)
-{
-	char	*cstr;
-	int		n;
-
-	cstr = conversion_format(ap, f);
-	n = 1;
-	if (f->type == 'c')
-		ft_putchar_fd(*cstr, 1);
-	else
-	{
-		ft_putstr_fd(cstr, 1);
-		n = ft_strlen(cstr);
-	}
-	free(cstr);
-	return (n);
 }

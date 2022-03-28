@@ -9,7 +9,7 @@
 /*   Updated: 2022/03/23 23:41:30 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "includes/ft_printf.h"
+#include "srcs/ft_printf.h"
 #include <stdio.h>
 #include <limits.h>
 
@@ -18,39 +18,50 @@ int	main(void)
 	int	n;
 	int	m;
 
-	// Char Test
-	// n = ft_printf(" %c %c %c ", '0', 0, '1');
-	// ft_printf("\nn = %d\n", n);
-	// m = printf(" %c %c %c ", '0', 0, '1');
-	// printf("\nm = %d", m);
+	// n = ft_printf("%+d", 42000);
+	// ft_printf(" [%d]\n", n);
+	// m = printf("%+d", 42000);
+	// printf(" [%d]\n", m);
 
-	// String Test
-	// char	*s = NULL;
+	// n = ft_printf("%+d", -42000);
+	// ft_printf(" [%d]\n", n);
+	// m = printf("%+d", -42000);
+	// printf(" [%d]\n", m);
 
-	// n = ft_printf("%s", s);
-	// ft_printf("\nn = %d\n", n);
-	// m = printf("%s", s);
-	// printf("\nm = %d", m);
+	// n = ft_printf("%#x", 42000);
+	// ft_printf(" [%d]\n", n);
+	// m = printf("%#x", 42000);
+	// printf(" [%d]\n", m);
 
-	// Pointer
-	// void	*s = "Araiva";
-	// void	*x = (void *) LONG_MIN;
-	// void	*y = (void *) ULONG_MAX;
-	// void	*z = (void *) -ULONG_MAX;
+	// n = ft_printf("%.4s", "hi there");
+	// ft_printf(" [%d]\n", n);
+	// m = printf("%.4s", "hi there");
+	// printf(" [%d]\n", m);
 
-	// n = ft_printf(" %p %p %p %p", s, x, y, z);
-	// ft_printf("\nn = %d\n", n);
-	// m = printf(" %p %p %p %p", s, x, y, z);
-	// printf("\nm = %d", m);
+	// n = ft_printf("%020.19X is how many tests are going to be made", 8000);
+	// ft_printf(" [%d]\n", n);
+	// m = printf("%020.19X is how many tests are going to be made", 8000);
+	// printf(" [%d]\n", m);
 
-	// n = ft_printf(" %u ", (unsigned int)LONG_MIN);
-	// ft_printf("\nn = %d\n", n);
-	// m = printf(" %u ", (unsigned int)LONG_MIN);
-	// printf("\nm = %d", m);
-
-	n = ft_printf("%X", 1000);
-	ft_printf("\nn = %d\n", n);
-	m = printf("%X", 1000);
-	printf("\nm = %d", m);
+	n = ft_printf("%c", 'a');
+	printf("\n[%d]\n", n);
+	m = printf("%c", 'a');
+	printf("\n[%d]\n", m);
+	n = ft_printf("%10c", 'a');
+	printf("\n[%d]\n", n);
+	m = printf("%10c", 'a');
+	printf("\n[%d]\n", m);
+	n = ft_printf("%1c", '\0');
+	printf("\n[%d]\n", n);
+	m = printf("%1c", '\0');
+	printf("\n[%d]\n", m);
+	n = ft_printf("%10c-", '\0');
+	printf("\n[%d]\n", n);
+	m = printf("%10c-", '\0');
+	printf("\n[%d]\n", m);
+	// n = ft_printf("%-c%-c%-4c%-11c", 'a', 'b', 'c', 'd');
+	// printf("\n[%d]\n", n);
+	// m = printf("%-c%-c%-4c%-11c", 'a', 'b', 'c', 'd');
+	// printf("\n[%d]\n", m);
 	return (0);
 }

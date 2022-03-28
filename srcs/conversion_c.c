@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "my_utils.h"
+#include "myutils.h"
 
 char	*conversion_c(char c)
 {

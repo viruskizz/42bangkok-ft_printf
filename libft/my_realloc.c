@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "my_utils.h"
+#include "myutils.h"
 
 void	*my_realloc(void *ptr, size_t size)
 {

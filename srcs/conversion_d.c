@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include "my_utils.h"
+#include "myutils.h"
 
 char	*conversion_d(int d)
 {

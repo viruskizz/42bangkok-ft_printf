@@ -1,53 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_ith.c                                           :+:      :+:    :+:   */
+/*   my_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/27 09:41:02 by araiva            #+#    #+#             */
-/*   Updated: 2022/03/27 09:41:03 by araiva           ###   ########.fr       */
+/*   Created: 2022/03/27 09:56:55 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/27 09:56:57 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "my_utils.h"
 #include "libft.h"
+#include "myutils.h"
 
-static int	baselen(long long int nb);
-
-// Convert int to hex
-char	*my_ith(long long int nb)
+char	*my_strrev(char *str)
 {
-	char	*base;
-	char	*str;
+	char	c;
 	int		i;
+	int		n;
 
-	base = "0123456789abcdef";
-	str = ft_calloc(sizeof(char), baselen(nb) + 1);
 	if (!str)
-		return (NULL);
-	str[0] = '0';
+		return (str);
 	i = 0;
-	while (nb > 0)
+	n = ft_strlen(str);
+	while (i < n / 2)
 	{
-		str[i] = base[nb % 16];
-		nb = nb / 16;
+		c = str[n - i - 1];
+		str[n - i - 1] = str[i];
+		str[i] = c;
 		i++;
 	}
-	my_strrev(str);
 	return (str);
-}
-
-static int	baselen(long long int nb)
-{
-	int		i;
-
-	if (nb == 0)
-		return (1);
-	i = 0;
-	while (nb > 0)
-	{
-		nb = nb / 16;
-		i++;
-	}
-	return (i);
 }

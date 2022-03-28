@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include "my_utils.h"
+#include "myutils.h"
 
 char	*my_strcat(char *s1, char *s2)
 {

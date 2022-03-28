@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_strtoupper.c                                    :+:      :+:    :+:   */
+/*   my_utils.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/27 22:39:09 by araiva            #+#    #+#             */
-/*   Updated: 2022/03/27 22:39:12 by araiva           ###   ########.fr       */
+/*   Created: 2022/03/25 20:41:11 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/25 20:41:13 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft.h"
 
-char	*my_strtoupper(char *str)
-{
-	int	i;
+#ifndef MYUTILS_H
+# define MYUTILS_H
 
-	i = 0;
-	while(str[i])
-	{
-		str[i] = ft_toupper(str[i]);
-		i++;
-	}
-	return (str);
-}
+# include <stdio.h>
+# include <unistd.h>
+# include <stddef.h>
+# include <stdlib.h>
+# include <limits.h>
+
+char	*my_ith(long long int nb);
+char	*my_strrev(char *str);
+char	*my_strcat(char *s1, char *s2);
+void	*my_realloc(void *ptr, size_t nsize);
+char	*my_strtoupper(char *str);
+size_t	my_memsize(void *ptr);
+
+#endif

@@ -57,7 +57,13 @@ SRCS =	ft_isalnum.c \
 		ft_lstlast.c \
 		ft_lstmap.c \
 		ft_lstnew.c \
-		ft_lstsize.c
+		ft_lstsize.c \
+		my_strrev.c \
+		my_ith.c \
+		my_memsize.c \
+		my_strcat.c \
+		my_strtoupper.c \
+		my_realloc.c
 
 OBJS = $(SRCS:.c=.o)
 
