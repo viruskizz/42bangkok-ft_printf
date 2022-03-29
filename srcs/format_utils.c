@@ -9,7 +9,7 @@
 /*   Updated: 2022/03/28 01:14:05 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
+#include <stdarg.h>
 #include "ft_printf.h"
 #include "libft.h"
 #include "myutils.h"
@@ -38,12 +38,21 @@ int	is_type(char c)
 		return (0);
 }
 
-int	set_format(char c, t_format *f)
+int	set_format(char c, va_list ap, t_format *f)
 {
 	int		valid;
+	int		star;
 
 	valid = 1;
-	if (f->dot && ft_isdigit(c))
+	if (f->dot && c == '*')
+		f->pcs = (va_arg(ap, int));
+	// {
+	// 	star = (va_arg(ap, int));
+	// 	if (star < 0)
+	// 		star = 0;
+	// 	f->pcs = star;
+	// }
+	else if (f->dot && ft_isdigit(c))
 		f->pcs = (f->pcs * 10) + (c - '0');
 	else if (is_type(c))
 		f->type = c;
@@ -55,12 +64,23 @@ int	set_format(char c, t_format *f)
 		f->space += 1;
 	else if (c == '0' && f->width == 0)
 		f->zero = 1;
-	else if (ft_isdigit(c))
-		f->width = (f->width * 10) + (c - '0');
 	else if (c == '#')
 		f->hash = 1;
 	else if (c == '.')
 		f->dot = 1;
+	else if (c == '*')
+		// f->width = (va_arg(ap, int));
+	{
+		star = (va_arg(ap, int));
+		if (star < 0)
+		{
+			f->minus = 1;
+			star *= -1;
+		}
+		f->width = star;
+	}
+	else if (ft_isdigit(c))
+		f->width = (f->width * 10) + (c - '0');
 	else
 		valid = 0;
 	return (valid);

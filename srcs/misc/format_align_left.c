@@ -63,11 +63,13 @@ static char	*align_left_digit(char *cstr, t_format *f)
 	i = 0;
 	plen = my_printlen(cstr);
 	cfstr = ft_calloc(sizeof(char), f->width + 1);
+	if (plen == 1
+		&& (f->dot && f->pcs == 0)
+		&& (cstr[0] == '0' || cstr[0] == '\0'))
+		cfstr[i++] = ' ';
 	while (i < f->width)
 	{	
-		if (i < plen && (f->dot && f->pcs == 0))
-			cfstr[i] = ' ';
-		else if (i < plen)
+		if (i < plen)
 			cfstr[i] = cstr[i];
 		else
 			cfstr[i] = ' ';

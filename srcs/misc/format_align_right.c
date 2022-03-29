@@ -74,16 +74,12 @@ static char	*align_right_digit(char *cstr, t_format *f)
 		f->width++;
 	}
 	i = fill_prefix_digit(cfstr, i, my_printlen(cstr), f);
+	if (my_printlen(cstr) == 1
+		&& (f->dot && f->pcs == 0)
+		&& (cstr[0] == '0' || cstr[0] == '\0'))
+		cfstr[i++] = ' ';
 	while (j < my_printlen(cstr))
-	{
-		if (f->dot && f->pcs == 0)
-		{
-			cfstr[i++] = ' ';
-			j++;
-		}	
-		else
-			cfstr[i++] = cstr[j++];
-	}
+		cfstr[i++] = cstr[j++];
 	return (cfstr);
 }
 

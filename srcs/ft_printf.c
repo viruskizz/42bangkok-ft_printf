@@ -15,7 +15,7 @@
 #include "myutils.h"
 
 int		runner(const char *str, va_list ap);
-char	*get_format_str(const char *str, t_format *f);
+char	*get_format_str(const char *str, va_list ap, t_format *f);
 
 int	ft_printf(const char *str, ...)
 {
@@ -41,7 +41,7 @@ int	runner(const char *str, va_list ap)
 	{
 		if (*str == '%')
 		{
-			fstr = get_format_str(str, &f);
+			fstr = get_format_str(str, ap, &f);
 			if (fstr)
 			{
 				len += print_format(ap, &f);
@@ -59,7 +59,7 @@ int	runner(const char *str, va_list ap)
 	return (len);
 }
 
-char	*get_format_str(const char *str, t_format *f)
+char	*get_format_str(const char *str, va_list ap, t_format *f)
 {
 	int		i;
 	char	*fstr;
@@ -71,7 +71,7 @@ char	*get_format_str(const char *str, t_format *f)
 	reset_format(f);
 	while (str[i])
 	{
-		if (!set_format(str[i], f))
+		if (!set_format(str[i], ap, f))
 		{	
 			free(fstr);
 			return (NULL);

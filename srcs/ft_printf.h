@@ -33,7 +33,7 @@ typedef struct s_format
 void	inspect_f(char *fstr, t_format *f);
 int		ft_printf(const char *str, ...);
 int		is_type(char c);
-int		set_format(char c, t_format *f);
+int		set_format(char c, va_list ap, t_format *f);
 void	reset_format(t_format *f);
 char	*set_format_str(char *fstr, char c, int i);
 int		print_format(va_list ap, t_format *f);

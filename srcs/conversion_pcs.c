@@ -42,10 +42,7 @@ static char	*format_pcs_str(char *cstr, t_format *f)
 
 	if ((f->dot && f->pcs == 0)
 		|| (ft_strncmp(cstr, "(null)", 6) == 0 && f->pcs < 6))
-	{
-		cfstr = malloc(sizeof(char) * 1);
-		cfstr[0] = 0;
-	}
+		cfstr = ft_calloc(sizeof(char) * 1);
 	else
 		cfstr = ft_substr(cstr, 0, f->pcs);
 	free(cstr);
@@ -64,7 +61,7 @@ static char	*format_pcs_digit(char *cstr, t_format *f)
 		free(cstr);
 		return (cfstr);
 	}
-	else if (f->pcs - ft_strlen(cstr) >= 0)
+	else if (f->pcs >= ft_strlen(cstr))
 	{
 		cfstr = pcs_digit_operation(cstr, f);
 		free(cstr);

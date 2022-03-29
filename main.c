@@ -17,33 +17,14 @@ int	main(void)
 {
 	int	n;
 	int	m;
-	char	*null_str = NULL;
-	char	*s = "";
+	// char	*null_str = NULL;
+	// char	*s = "";
 
-	n = ft_printf("%3s-", "ABC");
+	n = ft_printf("%0*.*i-", 2, -2, 8);
 	printf("\n[%d]\n", n);
-	m = printf("%3s-", "ABC");
+	m = printf("%0*.*i-", 2, -2, 8);
 	printf("\n[%d]\n", m);
-	n = ft_printf("%3s-", null_str);
-	printf("\n[%d]\n", n);
-	m = printf("%3s-", null_str);
-	printf("\n[%d]\n", m);
-	n = ft_printf("%3s-", s);
-	printf("\n[%d]\n", n);
-	m = printf("%3s-", s);
-	printf("\n[%d]\n", m);
-	// n = ft_printf("%3d-", 0);
-	// printf("\n[%d]\n", n);
-	// m = printf("%3d-", 0);
-	// printf("\n[%d]\n", m);
-	// n = ft_printf("%3.d-", 0);
-	// printf("\n[%d]\n", n);
-	// m = printf("%3.d-", 0);
-	// printf("\n[%d]\n", m);
-	// n = ft_printf("%3.1d-", 0);
-	// printf("\n[%d]\n", n);
-	// m = printf("%3.1d-", 0);
-	// printf("\n[%d]\n", m);
+
 	return (0);
 }
 

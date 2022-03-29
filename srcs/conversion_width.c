@@ -16,10 +16,12 @@
 char	*conversion_width(char	*cstr, t_format *f)
 {
 	char	*cfstr;
-	int		n;
+	// int		n;
 
-	n = f->width - ft_strlen(cstr);
-	if (n <= 0)
+	// inspect_f(cstr, f);
+	// printf(">>%s-\n", cstr);
+	// n = f->width - ft_strlen(cstr);
+	if (f->width <= ft_strlen(cstr))
 		return (cstr);
 	if (f->minus)
 		cfstr = align_left(cstr, f);
