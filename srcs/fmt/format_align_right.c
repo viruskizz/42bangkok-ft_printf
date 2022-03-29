@@ -41,7 +41,6 @@ static char	*align_right_str(char *cstr, t_format *f)
 	j = 0;
 	plen = my_printlen(cstr);
 	cfstr = ft_calloc(sizeof(char), f->width + 2);
-	// inspect_f(cstr, f);
 	while (i < f->width - plen)
 	{
 		if (f->zero)

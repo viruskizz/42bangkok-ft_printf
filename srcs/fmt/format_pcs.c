@@ -40,7 +40,8 @@ static char	*format_pcs_str(char *cstr, t_format *f)
 {
 	char	*cfstr;
 
-	if (ft_strncmp(cstr, "(null)", 6) == 0 && f->pcs < 6)
+	if ((f->dot && f->pcs == 0)
+		|| (ft_strncmp(cstr, "(null)", 6) == 0 && f->pcs < 6))
 	{
 		cfstr = malloc(sizeof(char) * 1);
 		cfstr[0] = 0;
