@@ -45,7 +45,7 @@ char	*conversion_width(char	*cstr, t_format *f);
 char	*conversion_c(char c);
 char	*conversion_d(int d);
 char	*conversion_s(char *s);
-char	*conversion_p(void *ptr);
+char	*conversion_p(unsigned long long ptr);
 char	*conversion_u(unsigned int d);
 char	*conversion_x(unsigned int nb, int is_upper);
 char	*align_left(char *cstr, t_format *f);

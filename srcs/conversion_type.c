@@ -21,7 +21,7 @@ char	*conversion_type(va_list ap, t_format *f)
 	else if (f->type == 's')
 		str = conversion_s(va_arg(ap, char *));
 	else if (f->type == 'p')
-		str = conversion_p(va_arg(ap, void *));
+		str = conversion_p((unsigned long long) va_arg(ap, void *));
 	else if (f->type == 'i' || f->type == 'd')
 		str = conversion_d(va_arg(ap, int));
 	else if (f->type == 'u')

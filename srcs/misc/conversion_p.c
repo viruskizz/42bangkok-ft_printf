@@ -12,9 +12,7 @@
 #include "libft.h"
 #include "myutils.h"
 
-static char	*hexlmit(long long int nb);
-
-char	*conversion_p(void *ptr)
+char	*conversion_p(size_t ptr)
 {
 	char	*hex;
 	char	*pstr;
@@ -30,9 +28,7 @@ char	*conversion_p(void *ptr)
 		return (NULL);
 	pstr[0] = '0';
 	pstr[1] = 'x';
-	hex = hexlmit((long long int) ptr);
-	if (!hex)
-		hex = my_ith((long long int) ptr);
+	hex = my_ith(ptr);
 	if (!hex)
 		return (NULL);
 	pstr = my_strcat(pstr, hex);
@@ -41,27 +37,4 @@ char	*conversion_p(void *ptr)
 	if (hex)
 		free(hex);
 	return (pstr);
-}
-
-static char	*hexlmit(long long int nb)
-{
-	char	*str;
-
-	if (nb == LONG_MIN)
-	{
-		str = ft_calloc(sizeof(char), 16 + 1);
-		if (!str)
-			return (NULL);
-		str = ft_memcpy(str, "8000000000000000", 16);
-		return (str);
-	}
-	else if ((long unsigned int) nb == ULONG_MAX)
-	{
-		str = ft_calloc(sizeof(char), 16 + 1);
-		if (!str)
-			return (NULL);
-		str = ft_memcpy(str, "ffffffffffffffff", 16);
-		return (str);
-	}
-	return (NULL);
 }

@@ -16,11 +16,8 @@
 char	*conversion_width(char	*cstr, t_format *f)
 {
 	char	*cfstr;
-	// int		n;
 
-	// inspect_f(cstr, f);
-	// printf(">>%s-\n", cstr);
-	// n = f->width - ft_strlen(cstr);
+	// !f->pcs && !f->width
 	if (f->width <= ft_strlen(cstr))
 		return (cstr);
 	if (f->minus)

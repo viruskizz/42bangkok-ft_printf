@@ -20,11 +20,10 @@ int	main(void)
 	// char	*null_str = NULL;
 	// char	*s = "";
 
-	n = ft_printf("%0*.*i-", 2, -2, 8);
+	n = ft_printf("This %p is even stranger", (void *)-1);
 	printf("\n[%d]\n", n);
-	m = printf("%0*.*i-", 2, -2, 8);
+	m = printf("This %p is even stranger", (void *)-1);
 	printf("\n[%d]\n", m);
 
 	return (0);
 }
-

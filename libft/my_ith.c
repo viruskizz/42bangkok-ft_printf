@@ -12,10 +12,10 @@
 #include "myutils.h"
 #include "libft.h"
 
-static int	baselen(long long int nb);
+static int	baselen(size_t nb);
 
 // Convert int to hex
-char	*my_ith(long long int nb)
+char	*my_ith(size_t nb)
 {
 	char	*base;
 	char	*str;
@@ -37,7 +37,7 @@ char	*my_ith(long long int nb)
 	return (str);
 }
 
-static int	baselen(long long int nb)
+static int	baselen(size_t nb)
 {
 	int		i;
 

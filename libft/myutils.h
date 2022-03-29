@@ -20,7 +20,7 @@
 # include <limits.h>
 
 int		my_printlen(char *str);
-char	*my_ith(long long int nb);
+char	*my_ith(size_t nb);
 char	*my_strrev(char *str);
 char	*my_strcat(char *s1, char *s2);
 void	*my_realloc(void *ptr, size_t nsize);
