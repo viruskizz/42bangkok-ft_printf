@@ -40,7 +40,8 @@ static char	*align_right_str(char *cstr, t_format *f)
 	i = 0;
 	j = 0;
 	plen = my_printlen(cstr);
-	cfstr = ft_calloc(sizeof(char), f->width + 1);
+	cfstr = ft_calloc(sizeof(char), f->width + 2);
+	// inspect_f(cstr, f);
 	while (i < f->width - plen)
 	{
 		if (f->zero)
@@ -48,6 +49,11 @@ static char	*align_right_str(char *cstr, t_format *f)
 		else
 			cfstr[i] = ' ';
 		i++;
+	}
+	if (f->type == 's' && cstr[0] == 0)
+	{
+		cfstr[i++] = ' ';
+		j++;
 	}
 	while (j < plen)
 		cfstr[i++] = cstr[j++];

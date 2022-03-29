@@ -41,7 +41,10 @@ static char	*align_left_str(char *cstr, t_format *f)
 	while (i < f->width)
 	{	
 		if (i < plen)
-			cfstr[i] = cstr[i];
+			if (f->type == 's' && cstr[i] == 0)
+				cfstr[i] = ' ';
+			else
+				cfstr[i] = cstr[i];
 		else
 			cfstr[i] = ' ';
 		i++;

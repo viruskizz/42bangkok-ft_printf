@@ -21,22 +21,14 @@ int	main(void)
 	// char	*s = "";
 
 	// printf("D:%d\n", s[0]);
-	n = ft_printf("--.%#xs", 0);
+	n = ft_printf("%1s-", "");
 	printf("\n[%d]\n", n);
-	m = printf("--.%#xs", 0);
+	m = printf("%1s-", "");
 	printf("\n[%d]\n", m);
-	// n = ft_printf("%.0d", 10);
-	// printf("\n[%d]\n", n);
-	// m = printf("%.0d", 10);
-	// printf("\n[%d]\n", m);
-	// n = ft_printf("%.3d", 1);
-	// printf("\n[%d]\n", n);
-	// m = printf("%.3d", 1);
-	// printf("\n[%d]\n", m);
-	// n = ft_printf("%.5d", -1234);
-	// printf("\n[%d]\n", n);
-	// m = printf("%.5d", -1234);
-	// printf("\n[%d]\n", m);
+	n = ft_printf("%-1s-", "");
+	printf("\n[%d]\n", n);
+	m = printf("%-1s-", "");
+	printf("\n[%d]\n", m);
 	return (0);
 }
 
