@@ -17,7 +17,6 @@ char	*conversion_width(char	*cstr, t_format *f)
 {
 	char	*cfstr;
 
-	// !f->pcs && !f->width
 	if (f->width <= ft_strlen(cstr))
 		return (cstr);
 	if (f->minus)

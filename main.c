@@ -17,48 +17,21 @@ int	main(void)
 {
 	int	n;
 	int	m;
-	// char	*null_str = NULL;
+	char	*null_str = NULL;
 	// char	*s = "";
 
-	// n = ft_printf("%2s", "ABCDE");
-	// printf("\n[%d]\n", n);
-	// m = printf("%2s", "ABCDE");
-	// printf("\n[%d]\n", m);
+	n = ft_printf("%.*s", -4, "ddddddd");
+	printf("\nn[%d]\n", n);
+	m = printf("%.*s", -4, "ddddddd");
+	printf("\nm[%d]\n", m);
 
-	n = ft_printf("%-20s<", "ABCDE");
-	printf("\n[%d]\n", n);
-	m = printf("%-20s<", "ABCDE");
-	printf("\n[%d]\n", m);
-
-	n = ft_printf("%-2s", "ABCDE");
-	printf("\n[%d]\n", n);
-	m = printf("%-2s", "ABCDE");
-	printf("\n[%d]\n", m);
-
-	n = ft_printf("%-2.4s", "ABCDE");
-	printf("\n[%d]\n", n);
-	m = printf("%-2.4s", "ABCDE");
-	printf("\n[%d]\n", m);
-
-	n = ft_printf("%-2.s<", "ABCDE");
-	printf("\n[%d]\n", n);
-	m = printf("%-2.s<", "ABCDE");
-	printf("\n[%d]\n", m);
-
-	// n = ft_printf("%s", "ABC");
-	// printf("\n[%d]\n", n);
-	// m = printf("%s", "ABC");
-	// printf("\n[%d]\n", m);
-
-	// n = ft_printf("%1.s", "ABC");
-	// printf("\n[%d]\n", n);
-	// m = printf("%1.s", "ABC");
-	// printf("\n[%d]\n", m);
-
-	// n = ft_printf("%*.*s", 4, 0, "ABCDEF");
-	// printf("\n[%d]\n", n);
-	// m = printf("%*.*s", 4, 0, "ABCDEF");
-	// printf("\n[%d]\n", m);
-
+	n = ft_printf("%.*s", -2, NULL);
+	printf("\nn[%d]\n", n);
+	m = printf("%.*s", -2, NULL);
+	printf("\nm[%d]\n", m);
+	n = ft_printf("%.s", NULL);
+	printf("\nn[%d]\n", n);
+	m = printf("%.s", NULL);
+	printf("\nm[%d]\n", m);
 	return (0);
 }

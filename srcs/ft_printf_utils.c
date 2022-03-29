@@ -52,8 +52,8 @@ static int	print_str(char *cstr, t_format *f)
 {
 	int		n;
 
-	if (f->type == 's' && (f->dot && f->pcs == 0))
-		return printf_empty(cstr, f);
+	if ((f->type == 's' && f->dot && f->pcs == 0) || (cstr[0] == 0))
+		return (printf_empty(cstr, f));
 	n = ft_strlen(cstr);
 	if (f->width > 0 && n == 0)
 		n = print_char(cstr, f->width);
@@ -67,26 +67,13 @@ static int	printf_empty(char *cstr, t_format *f)
 	int		n;
 
 	n = 0;
-	// inspect_f(cstr, f);
-	// if (!cstr);
-	if (ft_strlen(cstr) > 0 && f->width > 0)
+	if (cstr[0] == 0 && f->dot && f->pcs < 0)
+		n = print_char(S_EMPTY, S_EMPTY_L);
+	else if (ft_strlen(cstr) > 0 && f->width > 0)
 	{
 		while (n++ < f->width)
 			ft_putchar_fd(' ', 1);
 		n--;
 	}
 	return (n);
-}
-void	inspect_f(char *fstr, t_format *f)
-{
-	printf("fstr: %s\n", fstr);
-	printf("f->minus: %d\n", f->minus);
-	printf("f->plus: %d\n", f->plus);
-	printf("f->space: %d\n", f->space);
-	printf("f->zero: %d\n", f->zero);
-	printf("f->hash: %d\n", f->hash);
-	printf("f->dot: %d\n", f->dot);
-	printf("f->width: %d\n", f->width);
-	printf("f->pcs: %d\n", f->pcs);
-	printf("f->type: %c\n", f->type);
 }

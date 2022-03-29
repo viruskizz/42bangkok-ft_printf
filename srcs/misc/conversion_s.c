@@ -9,6 +9,7 @@
 /*   Updated: 2022/03/26 13:28:52 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#include "ft_printf.h"
 #include "libft.h"
 #include "myutils.h"
 
@@ -23,8 +24,8 @@ char	*conversion_s(char *s)
 	}
 	else
 	{
-		str = ft_calloc(sizeof(char), 7);
-		str = ft_memcpy(str, "(null)", 6);
+		str = ft_calloc(sizeof(char), S_EMPTY_L + 1);
+		str = ft_memcpy(str, S_EMPTY, S_EMPTY_L);
 	}
 	return (str);
 }
