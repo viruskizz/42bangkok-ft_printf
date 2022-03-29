@@ -59,7 +59,7 @@ int	set_star(char c, va_list ap, t_format *f)
 		}
 		f->width = star;
 	}
-	return (star);
+	return (1);
 }
 
 int	set_format(char c, va_list ap, t_format *f)

@@ -68,7 +68,7 @@ static char	*align_right_digit(char *cstr, t_format *f)
 	i = 0;
 	j = 0;
 	cfstr = ft_calloc(sizeof(char), f->width + 1);
-	if (cstr[0] == '-' && ((f->zero && !f->dot) || (f->pcs < 0)))
+	if (cstr[0] == '-' && (f->zero && (!f->dot || f->pcs < 0)))
 	{
 		cfstr[i++] = cstr[j++];
 		f->width++;
@@ -87,7 +87,7 @@ static int	fill_prefix_digit(char *cfstr, int i, int n, t_format *f)
 {
 	while (i < f->width - n)
 	{
-		if ((f->zero && !f->dot) || (f->pcs < 0))
+		if (f->zero && (!f->dot || f->pcs < 0))
 			cfstr[i] = '0';
 		else
 			cfstr[i] = ' ';

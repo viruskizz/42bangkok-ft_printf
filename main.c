@@ -20,9 +20,14 @@ int	main(void)
 	// char	*null_str = NULL;
 	// char	*s = "";
 
-	n = ft_printf("This %p is even stranger", (void *)-1);
+	n = ft_printf("%0*i", 2, 8);
 	printf("\n[%d]\n", n);
-	m = printf("This %p is even stranger", (void *)-1);
+	m = printf("%0*i", 2, 8);
+	printf("\n[%d]\n", m);
+
+	n = ft_printf("%*.*i", 2, -2, 8);
+	printf("\n[%d]\n", n);
+	m = printf("%*.*i", 2, -2, 8);
 	printf("\n[%d]\n", m);
 
 	return (0);
