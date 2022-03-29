@@ -15,10 +15,6 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 LIB	 = ar -rcs
 RM = /bin/rm -f
-BUILD_DIR = ./build
-SRC_DIRS = ./
-INCS_DIR = ./
-
 SRCS =	ft_atoi.c \
 		ft_bzero.c \
 		ft_calloc.c \
@@ -39,20 +35,18 @@ SRCS =	ft_atoi.c \
 		my_strtoupper.c \
 		my_realloc.c
 
+OBJS = $(SRCS:.c=.o)
 
-OBJS = $(SRCS:%=$(BUILD_DIR)/%.o)
+all: $(NAME)
 
-all: $(BUILD_DIR)/$(NAME)
-
-$(BUILD_DIR)/$(NAME): $(OBJS) $(INCS)
+$(NAME): $(OBJS) $(INCS)
 	ar -rcs	$(NAME) $(OBJS)
 
-$(BUILD_DIR)/%.c.o: %.c	
-	mkdir -p $(dir $@)	
-	$(CC) $(CFLAGS) -I $(INCS_DIR) -c $< -o $@
+.c.o: 		
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
 clean:		
-	$(RM) -r $(BUILD_DIR)
+	$(RM) $(OBJS)
 
 fclean: clean
 	$(RM) $(NAME)
