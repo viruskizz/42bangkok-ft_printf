@@ -38,7 +38,7 @@ int	is_type(char c)
 		return (0);
 }
 
-int		set_star(char c, va_list ap, t_format *f)
+int	set_star(char c, va_list ap, t_format *f)
 {
 	int		star;
 
@@ -64,10 +64,7 @@ int		set_star(char c, va_list ap, t_format *f)
 
 int	set_format(char c, va_list ap, t_format *f)
 {
-	int		star;
-
-	star = set_star(c, ap, f);
-	if (star)
+	if (set_star(c, ap, f))
 		return (1);
 	else if (f->dot && ft_isdigit(c))
 		f->pcs = (f->pcs * 10) + (c - '0');
@@ -119,18 +116,4 @@ char	*set_format_str(char *fstr, char c, int i)
 	fstr[i] = c;
 	fstr[n - 1] = 0;
 	return (fstr);
-}
-
-void	inspect_f(char *fstr, t_format *f)
-{
-	printf("fstr: %s\n", fstr);
-	printf("f->minus: %d\n", f->minus);
-	printf("f->plus: %d\n", f->plus);
-	printf("f->space: %d\n", f->space);
-	printf("f->zero: %d\n", f->zero);
-	printf("f->hash: %d\n", f->hash);
-	printf("f->dot: %d\n", f->dot);
-	printf("f->width: %d\n", f->width);
-	printf("f->pcs: %d\n", f->pcs);
-	printf("f->type: %c\n", f->type);
 }

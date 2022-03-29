@@ -60,3 +60,17 @@ static int	print_str(char *cstr, t_format *f)
 		ft_putstr_fd(cstr, 1);
 	return (n);
 }
+
+void	inspect_f(char *fstr, t_format *f)
+{
+	printf("fstr: %s\n", fstr);
+	printf("f->minus: %d\n", f->minus);
+	printf("f->plus: %d\n", f->plus);
+	printf("f->space: %d\n", f->space);
+	printf("f->zero: %d\n", f->zero);
+	printf("f->hash: %d\n", f->hash);
+	printf("f->dot: %d\n", f->dot);
+	printf("f->width: %d\n", f->width);
+	printf("f->pcs: %d\n", f->pcs);
+	printf("f->type: %c\n", f->type);
+}
