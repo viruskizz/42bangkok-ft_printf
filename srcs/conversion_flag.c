@@ -25,7 +25,6 @@ char	*conversion_flag(char	*cstr, t_format *f)
 	ft_memcpy(buf, cstr, ft_strlen(cstr));
 	cstr = format_plus(cstr, f);
 	cstr = format_hash(cstr, f);
-	cstr = format_pcs(cstr, f);
 	free(buf);
 	return (cstr);
 }

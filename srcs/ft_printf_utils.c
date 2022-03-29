@@ -22,6 +22,7 @@ int	print_format(va_list ap, t_format *f)
 
 	cstr = conversion_type(ap, f);
 	cstr = conversion_flag(cstr, f);
+	cstr = conversion_pcs(cstr, f);
 	cstr = conversion_width(cstr, f);
 	if (f->type == 'c')
 		n = print_char(cstr, f->width);

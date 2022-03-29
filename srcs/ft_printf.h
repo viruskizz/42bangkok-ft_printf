@@ -39,15 +39,15 @@ char	*set_format_str(char *fstr, char c, int i);
 int		print_format(va_list ap, t_format *f);
 char	*conversion_format(va_list ap, t_format *f);
 char	*conversion_type(va_list ap, t_format *f);
+char	*conversion_flag(char	*cstr, t_format *f);
+char	*conversion_pcs(char *cstr, t_format *f);
+char	*conversion_width(char	*cstr, t_format *f);
 char	*conversion_c(char c);
 char	*conversion_d(int d);
 char	*conversion_s(char *s);
 char	*conversion_p(void *ptr);
 char	*conversion_u(unsigned int d);
 char	*conversion_x(unsigned int nb, int is_upper);
-char	*conversion_flag(char	*cstr, t_format *f);
-char	*conversion_width(char	*cstr, t_format *f);
-char	*format_pcs(char *cstr, t_format *f);
 char	*align_left(char *cstr, t_format *f);
 char	*align_right(char *cstr, t_format *f);
 

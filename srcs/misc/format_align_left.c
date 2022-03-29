@@ -20,8 +20,11 @@ char	*align_left(char *cstr, t_format *f)
 {
 	char	*cfstr;
 
-	if (f->type == 'd' || f->type == 'i' || f->type == 'u'
-		|| f->type == 'x' || f->type == 'X')
+	if (f->type == 'd'
+		|| f->type == 'i'
+		|| f->type == 'u'
+		|| f->type == 'x'
+		|| f->type == 'X')
 		cfstr = align_left_digit(cstr, f);
 	else
 		cfstr = align_left_str(cstr, f);
@@ -40,11 +43,10 @@ static char	*align_left_str(char *cstr, t_format *f)
 	cfstr = ft_calloc(sizeof(char), f->width + 1);
 	while (i < f->width)
 	{	
-		if (i < plen)
-			if (f->type == 's' && cstr[i] == 0)
-				cfstr[i] = ' ';
-			else
-				cfstr[i] = cstr[i];
+		if (i < plen && (f->type == 's' && cstr[i] == 0))
+			cfstr[i] = ' ';
+		else if (i < plen)
+			cfstr[i] = cstr[i];
 		else
 			cfstr[i] = ' ';
 		i++;

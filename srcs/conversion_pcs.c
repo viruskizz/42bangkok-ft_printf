@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   format_pcs.c                                       :+:      :+:    :+:   */
+/*   conversion_pcs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: araiva <tsomsa@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/28 22:44:03 by araiva            #+#    #+#             */
-/*   Updated: 2022/03/28 22:44:04 by araiva           ###   ########.fr       */
+/*   Created: 2022/03/29 22:21:40 by araiva            #+#    #+#             */
+/*   Updated: 2022/03/29 22:21:42 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "ft_printf.h"
@@ -18,7 +18,7 @@ static char	*format_pcs_digit(char *cstr, t_format *f);
 static char	*pcs_digit_operation(char *cstr, t_format *f);
 static char	*pcs_digit_fill(char *cfstr, char *cstr, t_format *f);
 
-char	*format_pcs(char *cstr, t_format *f)
+char	*conversion_pcs(char *cstr, t_format *f)
 {
 	char	*cfstr;
 

@@ -17,52 +17,33 @@ int	main(void)
 {
 	int	n;
 	int	m;
-	// char	*null_str = NULL;
-	// char	*s = "";
+	char	*null_str = NULL;
+	char	*s = "";
 
-	// printf("D:%d\n", s[0]);
-	// n = ft_printf("%1s-", "");
+	n = ft_printf("%3s-", "ABC");
+	printf("\n[%d]\n", n);
+	m = printf("%3s-", "ABC");
+	printf("\n[%d]\n", m);
+	n = ft_printf("%3s-", null_str);
+	printf("\n[%d]\n", n);
+	m = printf("%3s-", null_str);
+	printf("\n[%d]\n", m);
+	n = ft_printf("%3s-", s);
+	printf("\n[%d]\n", n);
+	m = printf("%3s-", s);
+	printf("\n[%d]\n", m);
+	// n = ft_printf("%3d-", 0);
 	// printf("\n[%d]\n", n);
-	// m = printf("%1s-", "");
+	// m = printf("%3d-", 0);
 	// printf("\n[%d]\n", m);
-	// n = ft_printf("%-1s-", "");
+	// n = ft_printf("%3.d-", 0);
 	// printf("\n[%d]\n", n);
-	// m = printf("%-1s-", "");
+	// m = printf("%3.d-", 0);
 	// printf("\n[%d]\n", m);
-
-	n = ft_printf("%3d-", 0);
-	printf("\n[%d]\n", n);
-	m = printf("%3d-", 0);
-	printf("\n[%d]\n", m);
-	n = ft_printf("%3d-", 0);
-	printf("\n[%d]\n", n);
-	m = printf("%3d-", 0);
-	printf("\n[%d]\n", m);
-	n = ft_printf("%3.d-", 0);
-	printf("\n[%d]\n", n);
-	m = printf("%3.d-", 0);
-	printf("\n[%d]\n", m);
-	n = ft_printf("%3.1d-", 0);
-	printf("\n[%d]\n", n);
-	m = printf("%3.1d-", 0);
-	printf("\n[%d]\n", m);
-
-	n = ft_printf("%-3d-", 0);
-	printf("\n[%d]\n", n);
-	m = printf("%-3d-", 0);
-	printf("\n[%d]\n", m);
-	n = ft_printf("%-3d-", 0);
-	printf("\n[%d]\n", n);
-	m = printf("%-3d-", 0);
-	printf("\n[%d]\n", m);
-	n = ft_printf("%-3.d-", 0);
-	printf("\n[%d]\n", n);
-	m = printf("%-3.d-", 0);
-	printf("\n[%d]\n", m);
-	n = ft_printf("%-3.1d-", 0);
-	printf("\n[%d]\n", n);
-	m = printf("%-3.1d-", 0);
-	printf("\n[%d]\n", m);
+	// n = ft_printf("%3.1d-", 0);
+	// printf("\n[%d]\n", n);
+	// m = printf("%3.1d-", 0);
+	// printf("\n[%d]\n", m);
 	return (0);
 }
 

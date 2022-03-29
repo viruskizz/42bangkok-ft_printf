@@ -27,15 +27,15 @@ SRCS		= 	ft_printf.c \
 				conversion_type.c \
 				conversion_flag.c \
 				conversion_width.c \
-				fmt/format_pcs.c \
-				fmt/format_align_left.c \
-				fmt/format_align_right.c \
-				conv/conversion_c.c \
-				conv/conversion_d.c \
-				conv/conversion_s.c \
-				conv/conversion_p.c \
-				conv/conversion_u.c \
-				conv/conversion_x.c
+				conversion_pcs.c \
+				misc/format_align_left.c \
+				misc/format_align_right.c \
+				misc/conversion_c.c \
+				misc/conversion_d.c \
+				misc/conversion_s.c \
+				misc/conversion_p.c \
+				misc/conversion_u.c \
+				misc/conversion_x.c
 
 OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
 
