@@ -13,43 +13,37 @@
 NAME		= libftprintf.a
 CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror
-RM 			= /bin/rm -f
 
 INCS_DIR	= ./includes
 LIBFT_DIR	= ./libft
 LIBFT		= $(LIBFT_DIR)/libft.a
 
-BUILD_DIR	= build
 SRC_DIR		= ./srcs
-SRCS		= 	ft_printf.c \
-				ft_printf_utils.c \
-				format_utils.c \
-				conversion_type.c \
-				conversion_flag.c \
-				conversion_width.c \
-				fmt/format_pcs.c \
-				fmt/format_align_left.c \
-				fmt/format_align_right.c \
-				conv/conversion_c.c \
-				conv/conversion_d.c \
-				conv/conversion_s.c \
-				conv/conversion_p.c \
-				conv/conversion_u.c \
-				conv/conversion_x.c
+SRCS		= 	$(SRC_DIR)/ft_printf.c \
+				$(SRC_DIR)/ft_printf_utils.c \
+				$(SRC_DIR)/format_utils.c \
+				$(SRC_DIR)/format_pcs.c \
+				$(SRC_DIR)/format_align_left.c \
+				$(SRC_DIR)/format_align_right.c \
+				$(SRC_DIR)/conversion_type.c \
+				$(SRC_DIR)/conversion_flag.c \
+				$(SRC_DIR)/conversion_width.c \
+				$(SRC_DIR)/conversion_c.c \
+				$(SRC_DIR)/conversion_d.c \
+				$(SRC_DIR)/conversion_s.c \
+				$(SRC_DIR)/conversion_p.c \
+				$(SRC_DIR)/conversion_u.c \
+				$(SRC_DIR)/conversion_x.c
 
-OBJS = $(SRCS:%.c=$(BUILD_DIR)/%.o)
+OBJS		= $(SRCS:%.c=%.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT)
-	@echo "Linking $@"
-	@ar rc $(NAME) $(OBJS)
-	@echo "Done!"
+$(NAME): $(OBJS) $(LIBFT) $(MYUTILS)
+	ar -rcs $(NAME) $(OBJS)
 
-$(OBJS): $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
-	@mkdir -p $(@D)
-	@echo "Compiling $<"
-	@$(CC) $(CFLAGS) -I $(SRC_DIR) -I $(LIBFT_DIR) -c $< -o $@
+.c.o: 		
+	$(CC) $(CFLAGS) -I $(SRC_DIR) -I $(LIBFT_DIR) -c $< -o $(<:.c=.o)
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -59,11 +53,11 @@ bonus: all
 
 clean:
 	make clean -C $(LIBFT_DIR)
-	$(RM) -r $(BUILD_DIR)
+	rm -f $(OBJS)
 
 fclean: clean
 	make fclean -C $(LIBFT_DIR)
-	$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
