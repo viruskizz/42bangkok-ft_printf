@@ -42,7 +42,7 @@ static char	*format_pcs_str(char *cstr, t_format *f)
 
 	if ((f->dot && f->pcs == 0)
 		|| (ft_strncmp(cstr, "(null)", 6) == 0 && f->pcs < 6))
-		cfstr = ft_calloc(sizeof(char) * 1);
+		cfstr = ft_calloc(sizeof(char), 1);
 	else
 		cfstr = ft_substr(cstr, 0, f->pcs);
 	free(cstr);

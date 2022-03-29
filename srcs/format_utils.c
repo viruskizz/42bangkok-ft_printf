@@ -38,20 +38,37 @@ int	is_type(char c)
 		return (0);
 }
 
-int	set_format(char c, va_list ap, t_format *f)
+int		set_star(char c, va_list ap, t_format *f)
 {
-	int		valid;
 	int		star;
 
-	valid = 1;
-	if (f->dot && c == '*')
-		f->pcs = (va_arg(ap, int));
-	// {
-	// 	star = (va_arg(ap, int));
-	// 	if (star < 0)
-	// 		star = 0;
-	// 	f->pcs = star;
-	// }
+	if (c != '*')
+		return (0);
+	if (f->dot)
+	{
+		star = (va_arg(ap, int));
+		f->pcs = star;
+	}
+	else
+	{
+		star = (va_arg(ap, int));
+		if (star < 0)
+		{
+			f->minus = 1;
+			star *= -1;
+		}
+		f->width = star;
+	}
+	return (star);
+}
+
+int	set_format(char c, va_list ap, t_format *f)
+{
+	int		star;
+
+	star = set_star(c, ap, f);
+	if (star)
+		return (1);
 	else if (f->dot && ft_isdigit(c))
 		f->pcs = (f->pcs * 10) + (c - '0');
 	else if (is_type(c))
@@ -68,22 +85,11 @@ int	set_format(char c, va_list ap, t_format *f)
 		f->hash = 1;
 	else if (c == '.')
 		f->dot = 1;
-	else if (c == '*')
-		// f->width = (va_arg(ap, int));
-	{
-		star = (va_arg(ap, int));
-		if (star < 0)
-		{
-			f->minus = 1;
-			star *= -1;
-		}
-		f->width = star;
-	}
 	else if (ft_isdigit(c))
 		f->width = (f->width * 10) + (c - '0');
 	else
-		valid = 0;
-	return (valid);
+		return (0);
+	return (1);
 }
 
 void	reset_format(t_format *f)
