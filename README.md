@@ -19,7 +19,8 @@ The **printf** function is one of the most versatile and well-known functions in
 - Support Linux and Mac environment
 - Cover all bonus flag and `*` flag
 
-<img src="https://raw.githubusercontent.com/viruskizz/viruskizz-myutils/main/ft_printf_badge.png" alt="printft_badge" alt="printft_badge" />
+<div align=center>
+   <img src="https://raw.githubusercontent.com/viruskizz/viruskizz-myutils/main/printf_point.png" alt="printft_point" alt="printft_point" width=85% />
 </div>
 
 ---
@@ -131,6 +132,10 @@ Discovery this sheet to understand more about printf using case.
 
 ### Implementation
 
+<div align=center>
+   <img src="https://raw.githubusercontent.com/viruskizz/viruskizz-myutils/main/printf_concept_dark.png" alt="printft_concept" alt="printft_concept" width=80% />
+</div>
+
 1. Read character in ordering
    - [`ft_printf.c`](srcs/ft_printf.c)
 2. Check and set formatter string as `t_format`
@@ -160,6 +165,6 @@ Discovery this sheet to understand more about printf using case.
 
 ## Credit
 
-- README Inspiration:
-  - [_caroldanie_](https://github.com/caroldanie)
-  - [_TaKouMyS_](https://git.42l.fr/amamy/Ft_printf)
+README Inspiration:
+- [_caroldanie_](https://github.com/caroldanie)
+- [_TaKouMyS_](https://git.42l.fr/amamy/Ft_printf)
