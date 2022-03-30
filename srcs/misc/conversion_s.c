@@ -20,11 +20,15 @@ char	*conversion_s(char *s)
 	if (s)
 	{
 		str = ft_calloc(sizeof(char), ft_strlen(s) + 1);
+		if (!str)
+			return (NULL);
 		str = ft_memcpy(str, s, ft_strlen(s));
 	}
 	else
 	{
 		str = ft_calloc(sizeof(char), S_EMPTY_L + 1);
+		if (!str)
+			return (NULL);
 		str = ft_memcpy(str, S_EMPTY, S_EMPTY_L);
 	}
 	return (str);

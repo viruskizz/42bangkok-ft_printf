@@ -28,6 +28,8 @@ char	*align_left(char *cstr, t_format *f)
 		cfstr = align_left_digit(cstr, f);
 	else
 		cfstr = align_left_str(cstr, f);
+	if (!cfstr)
+		return (NULL);
 	free(cstr);
 	return (cfstr);
 }
@@ -41,6 +43,8 @@ static char	*align_left_str(char *cstr, t_format *f)
 	i = 0;
 	plen = my_printlen(cstr);
 	cfstr = ft_calloc(sizeof(char), f->width + 1);
+	if (!cfstr)
+		return (NULL);
 	while (i < f->width)
 	{	
 		if (i < plen && (f->type == 's' && cstr[i] == 0))
@@ -63,6 +67,8 @@ static char	*align_left_digit(char *cstr, t_format *f)
 	i = 0;
 	plen = my_printlen(cstr);
 	cfstr = ft_calloc(sizeof(char), f->width + 1);
+	if (!cfstr)
+		return (NULL);
 	if (plen == 1
 		&& (f->dot && f->pcs == 0)
 		&& (cstr[0] == '0' || cstr[0] == '\0'))

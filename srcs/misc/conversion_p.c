@@ -21,6 +21,8 @@ char	*conversion_p(size_t ptr)
 	if (!ptr)
 	{
 		pstr = ft_calloc(sizeof(char), P_EMPTY_L + 1);
+		if (!pstr)
+			return (NULL);
 		pstr = ft_memcpy(pstr, P_EMPTY, P_EMPTY_L);
 		return (pstr);
 	}

@@ -22,6 +22,8 @@ char	*my_strcat(char *s1, char *s2)
 	n1 = ft_strlen(s1);
 	n2 = ft_strlen(s2);
 	s1 = my_realloc((void *) s1, n1 + n2 + 1);
+	if (!s1)
+		return (NULL);
 	while (i < n1)
 		i++;
 	while (i < n2 + n1)

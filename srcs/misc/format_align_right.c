@@ -13,24 +13,9 @@
 #include "libft.h"
 #include "myutils.h"
 
-static char	*align_right_str(char *cstr, t_format *f);
-static char	*align_right_digit(char *cstr, t_format *f);
-static int	fill_prefix_digit(char *cfstr, int i, int n, t_format *f);
+static int	fill_prefix(char *cfstr, int i, int n, t_format *f);
 
 char	*align_right(char *cstr, t_format *f)
-{
-	char	*cfstr;
-
-	if (f->type == 'd' || f->type == 'i' || f->type == 'u'
-		|| f->type == 'x' || f->type == 'X')
-		cfstr = align_right_digit(cstr, f);
-	else
-		cfstr = align_right_str(cstr, f);
-	free(cstr);
-	return (cfstr);
-}
-
-static char	*align_right_str(char *cstr, t_format *f)
 {
 	char	*cfstr;
 	int		i;
@@ -39,51 +24,25 @@ static char	*align_right_str(char *cstr, t_format *f)
 
 	i = 0;
 	j = 0;
-	plen = my_printlen(cstr);
-	cfstr = ft_calloc(sizeof(char), f->width + 2);
-	while (i < f->width - plen)
-	{
-		if (f->zero)
-			cfstr[i] = '0';
-		else
-			cfstr[i] = ' ';
-		i++;
-	}
-	if (f->type == 's' && cstr[0] == 0)
-	{
-		cfstr[i++] = ' ';
-		j++;
-	}
-	while (j < plen)
-		cfstr[i++] = cstr[j++];
-	return (cfstr);
-}
-
-static char	*align_right_digit(char *cstr, t_format *f)
-{
-	char	*cfstr;
-	int		i;
-	int		j;
-
-	i = 0;
-	j = 0;
 	cfstr = ft_calloc(sizeof(char), f->width + 1);
+	plen = my_printlen(cstr);
+	if (!cfstr)
+		return (NULL);
 	if (cstr[0] == '-' && (f->zero && (!f->dot || f->pcs < 0)))
 	{
 		cfstr[i++] = cstr[j++];
 		f->width++;
 	}
-	i = fill_prefix_digit(cfstr, i, my_printlen(cstr), f);
-	if (my_printlen(cstr) == 1
-		&& (f->dot && f->pcs == 0)
-		&& (cstr[0] == '0' || cstr[0] == '\0'))
+	i = fill_prefix(cfstr, i, plen, f);
+	if (plen == 1 && (f->dot && f->pcs == 0) && (*cstr == '0' || *cstr == 0))
 		cfstr[i++] = ' ';
-	while (j < my_printlen(cstr))
+	while (j < plen)
 		cfstr[i++] = cstr[j++];
+	free(cstr);
 	return (cfstr);
 }
 
-static int	fill_prefix_digit(char *cfstr, int i, int n, t_format *f)
+static int	fill_prefix(char *cfstr, int i, int n, t_format *f)
 {
 	while (i < f->width - n)
 	{

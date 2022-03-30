@@ -20,6 +20,8 @@ char	*conversion_u(unsigned int d)
 	char	*str;
 
 	str = uits(d);
+	if (!str)
+		return (NULL);
 	my_strrev(str);
 	return (str);
 }

@@ -18,13 +18,8 @@ static char	*format_hash(char	*cstr, t_format *f);
 
 char	*conversion_flag(char	*cstr, t_format *f)
 {
-	char	*buf;
-
-	buf = ft_calloc(sizeof(char), ft_strlen(cstr) + 1);
-	ft_memcpy(buf, cstr, ft_strlen(cstr));
 	cstr = format_plus(cstr, f);
 	cstr = format_hash(cstr, f);
-	free(buf);
 	return (cstr);
 }
 
@@ -39,11 +34,15 @@ static char	*format_plus(char	*cstr, t_format *f)
 		if (nb < 0)
 			return (cstr);
 		cfstr = ft_calloc(sizeof(char), 2);
+		if (!cfstr)
+			return (NULL);
 		if (f->plus)
 			cfstr[0] = '+';
 		else
 			cfstr[0] = ' ';
 		cfstr = my_strcat(cfstr, cstr);
+		if (!cfstr)
+			return (NULL);
 		free(cstr);
 		return (cfstr);
 	}
@@ -59,11 +58,15 @@ static char	*format_hash(char	*cstr, t_format *f)
 		if (cstr[0] == '0')
 		{
 			cfstr = ft_calloc(sizeof(char), 2);
+			if (!cfstr)
+				return (NULL);
 			cfstr[0] = '0';
 		}
 		else
 		{
 			cfstr = ft_calloc(sizeof(char), 3);
+			if (!cfstr)
+				return (NULL);
 			cfstr[0] = '0';
 			cfstr[1] = f->type;
 			cfstr = my_strcat(cfstr, cstr);

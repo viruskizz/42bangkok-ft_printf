@@ -25,12 +25,16 @@ char	*conversion_pcs(char *cstr, t_format *f)
 	if (f->pcs && (f->type == 's' || f->type == 'c'))
 	{
 		cfstr = format_pcs_str(cstr, f);
+		if (!cfstr)
+			return (NULL);
 		return (cfstr);
 	}
 	if (f->type == 'i' || f->type == 'd' || f->type == 'u'
 		|| f->type == 'x' || f->type == 'X')
 	{
 		cfstr = format_pcs_digit(cstr, f);
+		if (!cfstr)
+			return (NULL);
 		return (cfstr);
 	}
 	return (cstr);
@@ -45,6 +49,8 @@ static char	*format_pcs_str(char *cstr, t_format *f)
 		cfstr = ft_calloc(sizeof(char), 1);
 	else
 		cfstr = ft_substr(cstr, 0, f->pcs);
+	if (!cfstr)
+		return (NULL);
 	free(cstr);
 	return (cfstr);
 }
@@ -58,12 +64,16 @@ static char	*format_pcs_digit(char *cstr, t_format *f)
 	else if (cstr[0] == '0' && f->pcs == 0)
 	{
 		cfstr = ft_calloc(sizeof(char), f->pcs + 1);
+		if (!cfstr)
+			return (NULL);
 		free(cstr);
 		return (cfstr);
 	}
 	else if (f->pcs >= ft_strlen(cstr))
 	{
 		cfstr = pcs_digit_operation(cstr, f);
+		if (!cfstr)
+			return (NULL);
 		free(cstr);
 		return (cfstr);
 	}
@@ -77,10 +87,16 @@ static char	*pcs_digit_operation(char *cstr, t_format *f)
 	if (cstr[0] == '-')
 	{
 		cfstr = ft_calloc(sizeof(char), f->pcs + 2);
+		if (!cfstr)
+			return (NULL);
 		cfstr[0] = '-';
 	}
 	else
+	{
 		cfstr = ft_calloc(sizeof(char), f->pcs + 1);
+		if (!cfstr)
+			return (NULL);
+	}
 	pcs_digit_fill(cfstr, cstr, f);
 	return (cfstr);
 }

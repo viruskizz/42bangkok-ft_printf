@@ -9,14 +9,15 @@
 /*   Updated: 2022/03/26 13:28:35 by araiva           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "myutils.h"
+#include "libft.h"
 
 char	*conversion_c(char c)
 {
 	char	*str;
 
-	str = malloc(sizeof(char) * 2);
+	str = ft_calloc(sizeof(char), 2);
+	if (!str)
+		return (NULL);
 	str[0] = c;
-	str[1] = 0;
 	return (str);
 }
