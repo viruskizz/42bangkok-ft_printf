@@ -20,18 +20,9 @@ int	main(void)
 	char	*null_str = NULL;
 	// char	*s = "";
 
-	n = ft_printf("%.*s", -4, "ddddddd");
+	n = ft_printf("%-2.4s", null_str);
 	printf("\nn[%d]\n", n);
-	m = printf("%.*s", -4, "ddddddd");
-	printf("\nm[%d]\n", m);
-
-	n = ft_printf("%.*s", -2, NULL);
-	printf("\nn[%d]\n", n);
-	m = printf("%.*s", -2, NULL);
-	printf("\nm[%d]\n", m);
-	n = ft_printf("%.s", NULL);
-	printf("\nn[%d]\n", n);
-	m = printf("%.s", NULL);
+	m = printf("%-2.4s", null_str);
 	printf("\nm[%d]\n", m);
 	return (0);
 }
