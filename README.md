@@ -132,9 +132,11 @@ Discovery this sheet to understand more about printf using case.
 
 ### Implementation
 
+<br/>
 <div align=center>
    <img src="https://raw.githubusercontent.com/viruskizz/viruskizz-myutils/main/printf_concept_dark.png" alt="printft_concept" alt="printft_concept" width=80% />
 </div>
+<br/>
 
 1. Read character in ordering
    - [`ft_printf.c`](srcs/ft_printf.c)
