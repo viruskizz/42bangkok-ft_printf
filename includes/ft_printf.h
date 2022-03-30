@@ -31,12 +31,14 @@ typedef struct s_format
 }	t_format;
 
 # ifdef __linux__
+#  define IS_LINUX 1
 #  define OS "LINUX"
 #  define S_EMPTY "(null)"
 #  define S_EMPTY_L 6
 #  define P_EMPTY "(nil)"
 #  define P_EMPTY_L 5
 # else
+#  define IS_LINUX 0
 #  define OS "MAC"
 #  define S_EMPTY "(null)"
 #  define S_EMPTY_L 6

@@ -38,7 +38,7 @@ static char	*format_pcs_str(char *cstr, t_format *f)
 	char	*cfstr;
 
 	if ((f->dot && f->pcs == 0)
-		|| (ft_strncmp(cstr, S_EMPTY, S_EMPTY_L) == 0 && f->pcs < 6))
+		|| (ft_strncmp(cstr, S_EMPTY, S_EMPTY_L) == 0 && f->pcs < 6 && IS_LINUX))
 		cfstr = ft_calloc(sizeof(char), 1);
 	else
 		cfstr = ft_substr(cstr, 0, f->pcs);
