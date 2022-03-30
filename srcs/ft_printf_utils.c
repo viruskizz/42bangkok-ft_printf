@@ -32,7 +32,9 @@ int	printf_empty(char *cstr, t_format *f)
 	int		n;
 
 	n = 0;
-	if (cstr[0] == 0 && f->dot && f->pcs < 0)
+	if (cstr[0] == 0 && f->width)
+		n = print_char(" ", 1);
+	else if (cstr[0] == 0 && f->dot && f->pcs < 0)
 		n = print_char(S_EMPTY, S_EMPTY_L);
 	else if (ft_strlen(cstr) > 0 && f->width > 0)
 	{
