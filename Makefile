@@ -47,7 +47,7 @@ $(NAME): $(OBJS) $(LIBFT)
 $(OBJS): $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 	@mkdir -p $(@D)
 	@echo "Compiling $<"
-	@$(CC) $(CFLAGS) -I $(SRC_DIR) -I $(LIBFT_DIR) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(INCS_DIR) -I $(LIBFT_DIR) -c $< -o $@
 
 $(LIBFT):
 	make -C $(LIBFT_DIR)
@@ -68,12 +68,12 @@ re: fclean all
 rebonus: fclean bonus
 
 test: re
-	@$(CC) main.c -lftprintf -L . -o runner.out
+	@$(CC) main.c -lftprintf -L . -I $(INCS_DIR) -o runner.out
 	@echo "\033[0;32m=== RUNNER ===\033[0m"
 	@./runner.out
 
 testmem: re
-	@$(CC) $(CFLAGS) main.c -lftprintf -L . -o runner.out
+	@$(CC) $(CFLAGS) main.c -lftprintf -L . -I $(INCS_DIR) -o runner.out
 	@echo "\033[0;32m=== RUNNER ===\033[0m"
 	@valgrind -q --leak-check=full --track-origins=yes ./runner.out
 	

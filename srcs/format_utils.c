@@ -92,9 +92,9 @@ void	reset_format(t_format *f)
 char	*set_format_str(char *fstr, char c, int i)
 {
 	if (!fstr)
-		fstr = ft_calloc(sizeof(char), i + 1);
+		fstr = ft_calloc(sizeof(char), i + 2);
 	else
-		fstr = my_realloc(fstr, i + 1);
+		fstr = my_realloc(fstr, i + 2);
 	if (!fstr)
 		return (NULL);
 	fstr[i] = c;
