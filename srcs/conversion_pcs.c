@@ -24,14 +24,9 @@ char	*conversion_pcs(char *cstr, t_format *f)
 
 	if (!f->dot)
 		return (cstr);
-	if (f->type == 's'
-		|| f->type == 'c')
+	if (f->type == 's' || f->type == 'c')
 		cfstr = format_pcs_str(cstr, f);
-	else if (f->type == 'i'
-		|| f->type == 'd'
-		|| f->type == 'u'
-		|| f->type == 'x'
-		|| f->type == 'X')
+	else
 		cfstr = format_pcs_digit(cstr, f);
 	if (!cfstr)
 		return (NULL);
