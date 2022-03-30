@@ -19,7 +19,11 @@ static char	*format_hash(char	*cstr, t_format *f);
 char	*conversion_flag(char	*cstr, t_format *f)
 {
 	cstr = format_plus(cstr, f);
+	if (!cstr)
+		return (NULL);
 	cstr = format_hash(cstr, f);
+	if (!cstr)
+		return (NULL);
 	return (cstr);
 }
 
@@ -55,21 +59,16 @@ static char	*format_hash(char	*cstr, t_format *f)
 
 	if (f->hash && (f->type == 'x' || f->type == 'X'))
 	{
-		if (cstr[0] == '0')
+		cfstr = ft_calloc(sizeof(char), 3);
+		if (!cfstr)
+			return (NULL);
+		cfstr[0] = '0';
+		if (cstr[0] != '0')
 		{
-			cfstr = ft_calloc(sizeof(char), 2);
-			if (!cfstr)
-				return (NULL);
-			cfstr[0] = '0';
-		}
-		else
-		{
-			cfstr = ft_calloc(sizeof(char), 3);
-			if (!cfstr)
-				return (NULL);
-			cfstr[0] = '0';
 			cfstr[1] = f->type;
 			cfstr = my_strcat(cfstr, cstr);
+			if (!cfstr)
+				return (NULL);
 		}
 		free(cstr);
 		return (cfstr);

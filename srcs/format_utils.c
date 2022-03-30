@@ -16,26 +16,13 @@
 
 int	is_type(char c)
 {
-	if (c == 'c')
-		return (1);
-	else if (c == 's')
-		return (1);
-	else if (c == 'p')
-		return (1);
-	else if (c == 'd')
-		return (1);
-	else if (c == 'i')
-		return (1);
-	else if (c == 'u')
-		return (1);
-	else if (c == 'x')
-		return (1);
-	else if (c == 'X')
-		return (1);
-	else if (c == '%')
-		return (1);
-	else
-		return (0);
+	char	*ptr;
+
+	ptr = F_TYPE;
+	while (*ptr)
+		if (*ptr++ == c)
+			return (1);
+	return (0);
 }
 
 int	set_star(char c, va_list ap, t_format *f)
@@ -104,16 +91,12 @@ void	reset_format(t_format *f)
 
 char	*set_format_str(char *fstr, char c, int i)
 {
-	int		n;
-
-	n = i + 2;
 	if (!fstr)
-		fstr = malloc(sizeof(char) * n);
+		fstr = ft_calloc(sizeof(char), i + 1);
 	else
-		fstr = my_realloc(fstr, n);
+		fstr = my_realloc(fstr, i + 1);
 	if (!fstr)
 		return (NULL);
 	fstr[i] = c;
-	fstr[n - 1] = 0;
 	return (fstr);
 }

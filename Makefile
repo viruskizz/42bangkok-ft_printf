@@ -28,8 +28,6 @@ SRCS		= 	ft_printf.c \
 				conversion_flag.c \
 				conversion_width.c \
 				conversion_pcs.c \
-				misc/format_align_left.c \
-				misc/format_align_right.c \
 				misc/conversion_c.c \
 				misc/conversion_d.c \
 				misc/conversion_s.c \

@@ -22,22 +22,20 @@ char	*conversion_pcs(char *cstr, t_format *f)
 {
 	char	*cfstr;
 
-	if (f->pcs && (f->type == 's' || f->type == 'c'))
-	{
+	if (!f->dot)
+		return (cstr);
+	if (f->type == 's'
+		|| f->type == 'c')
 		cfstr = format_pcs_str(cstr, f);
-		if (!cfstr)
-			return (NULL);
-		return (cfstr);
-	}
-	if (f->type == 'i' || f->type == 'd' || f->type == 'u'
-		|| f->type == 'x' || f->type == 'X')
-	{
+	else if (f->type == 'i'
+		|| f->type == 'd'
+		|| f->type == 'u'
+		|| f->type == 'x'
+		|| f->type == 'X')
 		cfstr = format_pcs_digit(cstr, f);
-		if (!cfstr)
-			return (NULL);
-		return (cfstr);
-	}
-	return (cstr);
+	if (!cfstr)
+		return (NULL);
+	return (cfstr);
 }
 
 static char	*format_pcs_str(char *cstr, t_format *f)
@@ -59,9 +57,7 @@ static char	*format_pcs_digit(char *cstr, t_format *f)
 {
 	char	*cfstr;
 
-	if (!f->dot)
-		return (cstr);
-	else if (cstr[0] == '0' && f->pcs == 0)
+	if (cstr[0] == '0' && f->pcs == 0)
 	{
 		cfstr = ft_calloc(sizeof(char), f->pcs + 1);
 		if (!cfstr)

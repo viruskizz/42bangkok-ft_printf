@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 #include <stdarg.h>
 #include "ft_printf.h"
+#include "libft.h"
 
 char	*conversion_type(va_list ap, t_format *f)
 {
@@ -33,9 +34,8 @@ char	*conversion_type(va_list ap, t_format *f)
 	else if (f->type == '%')
 		str = conversion_c('%');
 	else
-	{
-		str = malloc(sizeof(char) * 1);
-		str[0] = 0;
-	}
+		str = ft_calloc(sizeof(char), 1);
+	if (!str)
+		return (NULL);
 	return (str);
 }

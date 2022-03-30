@@ -14,8 +14,9 @@
 #include "libft.h"
 #include "myutils.h"
 
-int		runner(const char *str, va_list ap);
-char	*get_format_str(const char *str, va_list ap, t_format *f);
+static int	runner(const char *str, va_list ap);
+static char	*get_format_str(const char *str, va_list ap, t_format *f);
+static int	print_format(va_list ap, t_format *f);
 
 int	ft_printf(const char *str, ...)
 {
@@ -30,7 +31,7 @@ int	ft_printf(const char *str, ...)
 	return (len);
 }
 
-int	runner(const char *str, va_list ap)
+static int	runner(const char *str, va_list ap)
 {
 	char		*fstr;
 	int			len;
@@ -59,7 +60,7 @@ int	runner(const char *str, va_list ap)
 	return (len);
 }
 
-char	*get_format_str(const char *str, va_list ap, t_format *f)
+static char	*get_format_str(const char *str, va_list ap, t_format *f)
 {
 	int		i;
 	char	*fstr;
@@ -85,4 +86,21 @@ char	*get_format_str(const char *str, va_list ap, t_format *f)
 	}
 	free(fstr);
 	return (NULL);
+}
+
+static int	print_format(va_list ap, t_format *f)
+{
+	char	*cstr;
+	int		n;
+
+	cstr = conversion_type(ap, f);
+	cstr = conversion_flag(cstr, f);
+	cstr = conversion_pcs(cstr, f);
+	cstr = conversion_width(cstr, f);
+	if (f->type == 'c')
+		n = print_char(cstr, f->width);
+	else
+		n = print_str(cstr, f);
+	free(cstr);
+	return (n);
 }
