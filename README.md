@@ -15,7 +15,7 @@ The **printf** function is one of the most versatile and well-known functions in
 - Passed 3 tester
   - [Sanatana Tester](https://github.com/paulo-santana/ft_printf_tester/)
   - [Tripouille Tester](https://github.com/paulo-santana/ft_printf_tester/)
-  - [Mazoise Tester](https://github.com/Mazoise/42TESTERS-PRINTF/)
+  - [Mazoise Tester](https://github.com/Mazoise/42TESTERS-PRINTF/) (Optional) -- to join Kitty Club
 - Support Linux and Mac environment
 - Cover all bonus flag and `*` flag
 
